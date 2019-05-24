@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AppComponent } from './app.component';
+import { MainPageComponent } from './components/interface/main-page/main-page.component';
+import { ErrorRedirectComponent } from './components/generalComponents/error-redirect/error-redirect.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '', pathMatch: 'full' },
-  { path: '', component: AppComponent, pathMatch: 'full' },
-  // { path: '**', component: PageNotFoundComponent }
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: MainPageComponent, pathMatch: 'full' },
+  { path: '**', component: ErrorRedirectComponent }
 ];
 
 

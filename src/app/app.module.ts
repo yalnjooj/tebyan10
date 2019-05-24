@@ -4,10 +4,14 @@ import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { MainPageComponent } from './components/interface/main-page/main-page.component';
+import { ErrorRedirectComponent } from './components/generalComponents/error-redirect/error-redirect.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MainPageComponent,
+    ErrorRedirectComponent,
   ],
   imports: [
     BrowserModule,
