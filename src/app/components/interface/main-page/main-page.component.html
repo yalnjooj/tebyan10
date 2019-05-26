@@ -1,53 +1,680 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a href="#" class="navbar-brand">منصة تبيان</a>
+<!-- -----------------------------------------   Navpar  --------------------------------------- -->
+<nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark" style="z-index: 100;">
+  <a href="#" class="navbar-brand">
+    <img src="../../../../assets/img/logo.png" height="30" alt="logo">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-  <ul class="navbar-nav ml-auto">
-    <li class="nav-item">
-      <a routerLink="" class="nav-link">تسجيل الدخول</a>
-    </li>
-    <li class="nav-item">
-      <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
-        aria-haspopup="true" aria-expanded="false">الاستعلام</a>
-      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a href="#" class="dropdown-item">الشهادات</a>
-        <a href="#" class="dropdown-item">رخصة التدريب</a>
-      </div>
-    </li>
-  </ul>
-  <ul class="navbar-nav mr-auto">
-    <li class="nav-item">
-      <a routerLink="" class="nav-link">الاسئلة الشائعة</a>
-    </li>
-  </ul>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a routerLink="" class="nav nav-link" data-toggle="modal" data-target="#logIn">تسجيل الدخول</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle active" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">الاستعلامات</a>
+        <div class="dropdown-menu text-right" aria-labelledby="navbarDropdown">
+          <a routerLink="#" class="dropdown-item" data-toggle="modal" data-target="#techer-c">شهادة معلم</a>
+          <a routerLink="#" class="dropdown-item" data-toggle="modal" data-target="#trainer-c">شهادة مدرب</a>
+          <a routerLink="#" class="dropdown-item" data-toggle="modal" data-target="#supervisor-c">شهادة مشرف</a>
+
+          <div class="dropdown-divider"></div>
+          <a routerLink="#" class="dropdown-item text-danger" data-toggle="modal" data-target="#training-l-s">رخصة
+            التدريب</a>
+
+        </div>
+      </li>
+    </ul>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a routerLink="" class="nav nav-link" data-toggle="modal" data-target="#common-q">الاسئلة الشائعة</a>
+      </li>
+    </ul>
+  </div>
 </nav>
 
 
+<!-- -----------------------------------------   Container  --------------------------------------- -->
+<div class="container-fluid" id="containerHeight">
+
+  <!-- backgroun video -->
+  <video autoplay muted loop id="myVideo">
+    <source src="../../../../assets/video/background.mp4" type="video/mp4">
+  </video>
+
+  <!-- slider -->
+  <div class="row justify-content-center h-100 align-items-center" id="cenerSpase">
+    <div class="col-md col-sm text-center hidden-md-down">
+
+      <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+
+            <h1 class="display-4 text-primary">منصة مركز تبيان</h1>
+            <!-- btn-block // disabled // active-->
+            <a href="#" class="btn btn-outline-warning btn-lg" role="button" aria-pressed="true">انتقل الى الموقع</a>
 
 
-<div class="container">
-  <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-    Launch demo modal
-  </button>
+          </div>
+          <div class="carousel-item">
 
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+            <h1 class="display-4 text-primary">شراكاء النجاح</h1>
+            <!-- btn-block // disabled // active-->
+            <a href="#" class="btn btn-outline-warning btn-lg" role="button" aria-pressed="true">تفضل بزيارتهم</a>
+
+
+          </div>
+          <div class="carousel-item">
+
+            <h1 class="display-4 text-primary"> نسعد بالتواصل معكم عبر مواقع التواصل الاجتماعي</h1>
+            <!-- btn-block // disabled // active-->
+            <div class="row justify-content-center">
+              <div class="col-md-1"><a href="http://tebyaan.org/" target="_blank">
+                  <img src="../../../../assets/img/clipart966995.png" width="33" /></a></div>
+              <div class="col-md-1"><a href="https://www.snapchat.com/add/tbyantaif" target="_blank"><img
+                    src="../../../../assets/img/clipart799526.png" width="33" /></a></div>
+              <div class="col-md-1"><a href="https://twitter.com/tbyantaif" target="_blank"><img
+                    src="../../../../assets/img/clipart363919.png" width="33" /></a></div>
+              <div class="col-md-1"><a href="https://api.whatsapp.com/send?phone=966554450696" target="_blank"><img
+                    src="../../../../assets/img/clipart452685.png" width="33" /></a></div>
+            </div>
+
+
+          </div>
         </div>
-        <div class="modal-body">
-          ...
+      </div>
+    </div>
+  </div>
+
+
+  <!-- -----------------------------------------   Footer  ------------------------------------------- -->
+
+  <!-- App Store section -->
+  <div class="row justify-content-end" id="logosRow">
+    <div class="col">
+      <a href="#" target="_blank"> <img src="../../../../assets/img/AppStore.png" class="img-fluid" width="130"
+          alt="googlePlay" />
+      </a>
+    </div>
+  </div>
+
+  <!-- Google Play section -->
+  <div class="row justify-content-end mt-1" id="logosRow">
+    <div class="col">
+      <a href="" target="_blank"> <img src="../../../../assets/img/googlePlay.png" class="img-fluid" width="132"
+          alt="googlePlay" /></a>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+<!-- --------------------------------   Out Side Container   ------------------------------------- -->
+
+<!-- Log In Modal -->
+<div class="modal fade" id="logIn" tabindex="-1" role="dialog" aria-labelledby="logInModal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header mx-auto">
+        <p class="modal-title" id="logInModal">
+          <img class="rounded mx-auto d-block" alt="Logo Move" src="../../../../assets/img/logo0.png" width="130" />
+        </p>
+      </div>
+      <div class="modal-body">
+        <div class="col text-right left-side">
+          <form novalidate #fo="ngForm" (ngSubmit)="mySubmit(fo)">
+            <div class="form-group">
+              <div class="row justify-content-between">
+                <div class="col-4">
+                  <label for="email" class="white"><small>البريد الإلكتروني:</small></label>
+                </div>
+                <div class="col-4">
+                  <div *ngIf="myemail.errors?.required && myemail.touched" class="text-danger d-inline">
+                    <small>أدخل البريد الإلكتروني</small>
+                  </div>
+                </div>
+              </div>
+
+              <input type="email" name="email" id="email" placeholder="أدخل بريدك الإلكتروني" class="form-control"
+                pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" [(ngModel)]="user.email" #myemail="ngModel"
+                required>
+            </div>
+            <div class="form-group">
+              <div class="row justify-content-between">
+                <div class="col-4">
+                  <label for="pwd" class="white">كلمة المرور:</label>
+                </div>
+                <div class="col-4">
+                  <div *ngIf="mypwd.errors?.required && mypwd.touched" class="text-danger d-inline"><small>أدخل كلمة
+                      المرور</small></div>
+
+                </div>
+              </div>
+
+              <input type="password" id="pwd" name="pwd" placeholder="أدخل كملة المرور" class="form-control"
+                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" [(ngModel)]="user.pwd" #mypwd="ngModel" required>
+            </div>
+            <div class="form-group form-check">
+              <small>
+                <a routerLink="#" class="nav nav-link" data-toggle="modal" data-target="#sendpass">هل فقدت كلمة
+                  مرورك؟</a>
+              </small>
+              <div *ngIf="myemail.errors?.pattern && myemail.touched" class="text-danger text-center"><small>صيغة البريد
+                  الالكتروني غير صحيحة!</small></div>
+            </div>
+
+
+
+            <div *ngIf="mypwd.errors?.pattern && mypwd.touched" class="text-danger text-left"><small>Must contain at
+                least one
+                number and
+                one uppercase and lowercase letter, and at least 8 or more characters</small></div>
+          </form>
+
+          {{verfiyForm}}
+
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary ml-auto btn-md">دخول</button>
+        <button type="button" class="btn btn-secondary mr-auto btn-md" data-dismiss="modal">إلغاء</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Resend password to email -->
+<div class="modal fade" id="sendpass" tabindex="-1" role="dialog" aria-labelledby="logInModal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header mx-auto">
+        <p class="modal-title" id="logInModal">
+          <img class="rounded mx-auto d-block" alt="Logo Move" src="../../../../assets/img/logo0.png" width="130" />
+        </p>
+      </div>
+      <div class="modal-body">
+        <div class="col text-right left-side">
+          <form novalidate #fo="ngForm" (ngSubmit)="mySubmit(fo)">
+            <div class="form-group">
+              <div class="row mb-3">
+                <div class="col">
+                  <small>
+                    أدخل عنوان البريد الإلكتروني, سيتم إرسال رابط إلى بريدك تستطيع من خلاله إنشاء كلمة مرور جديدة.
+                  </small>
+                </div>
+              </div>
+              <div class="row justify-content-between">
+
+                <div class="col-4">
+                  <label for="email" class="white"><small>البريد الإلكتروني:</small></label>
+                </div>
+                <div class="col-4">
+                  <div *ngIf="myemail.errors?.required && myemail.touched" class="text-danger d-inline">
+                    <small>أدخل البريد الإلكتروني</small>
+                  </div>
+                </div>
+              </div>
+
+              <input type="email" name="email" id="email" placeholder="أدخل بريدك الإلكتروني" class="form-control"
+                pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" [(ngModel)]="user.email" #myemail="ngModel"
+                required>
+            </div>
+            <small class="text-danger"><b>خطأ:</b> لا يوجد مستخدم مسجل بهذا البريد الإلكتروني
+            </small>
+            <div class="form-group form-check">
+
+              <div *ngIf="myemail.errors?.pattern && myemail.touched" class="text-danger text-center"><small>صيغة البريد
+                  الالكتروني غير صحيحة!</small></div>
+
+            </div>
+
+          </form>
+
+          {{verfiyForm}}
+
         </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary ml-auto btn-md">احصل على كلمة مرور جديدة</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Techer Certifcate Search -->
+<div class="modal fade" id="techer-c" tabindex="-1" role="dialog" aria-labelledby="techer-c" aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header mx-auto">
+        <p class="modal-title" id="techer-c">
+          <img class="rounded mx-auto d-block" alt="Logo Move" src="../../../../assets/img/logo0.png" width="130" />
+        </p>
+      </div>
+      <div class="modal-body">
+        <div class="col text-right left-side">
+          <form novalidate #fo="ngForm" (ngSubmit)="mySubmit(fo)">
+            <div class="form-group">
+              <div class="row justify-content-between">
+                <div class="col">
+                  <label for="email" class="white"><small>شهادة معلم:</small></label>
+                </div>
+                <div class="col">
+                  <div *ngIf="myemail.errors?.required && myemail.touched" class="text-danger d-inline">
+                    <small>أدخل رقم الشهادة</small>
+                  </div>
+                </div>
+              </div>
+
+              <input type="email" name="email" id="email" placeholder="أدخل رقم الشهادة" class="form-control"
+                pattern="[a-zA-Z0-9]{5}$" [(ngModel)]="user.email" #myemail="ngModel" required>
+            </div>
+
+            <div class="form-group form-check">
+              <div *ngIf="myemail.errors?.pattern && myemail.touched" class="text-danger text-center"><small>أقل من خمسة
+                  أرقام</small></div>
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+      <div class="modal-footer mx-auto">
+        <a routerLink="#" class="btn btn-danger" data-toggle="modal" data-target="#techer-r">بحث</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Techer Certifcate Resulte -->
+<div class="modal fade" id="techer-r" tabindex="-1" role="dialog" aria-labelledby="techer-r" aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header mx-auto">
+        <p class="modal-title" id="techer-r">
+          <img class="rounded mx-auto d-block" alt="Logo Move" src="../../../../assets/img/logo0.png" width="130" />
+        </p>
+      </div>
+      <div class="modal-body">
+        <div class="col text-right left-side">
+          <form novalidate #fo="ngForm" (ngSubmit)="mySubmit(fo)">
+            <div class="form-group">
+              <div class="row justify-content-center">
+                <h4 class="text-danger">اسم المعلم</h4>
+              </div>
+              <div class="row justify-content-start">
+                <p class="text-dark">النتيجة:</p>
+              </div>
+              <div class="row justify-content-start">
+                <p class="text-dark">التقدير:</p>
+              </div>
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+      <div class="modal-footer mx-auto">
+        <button type="button" class="btn btn-secondary mr-auto btn-md" data-dismiss="modal">إغلاق</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Trainer Certifcate Search -->
+<div class="modal fade" id="trainer-c" tabindex="-1" role="dialog" aria-labelledby="trainer-c" aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header mx-auto">
+        <p class="modal-title" id="techer-c">
+          <img class="rounded mx-auto d-block" alt="Logo Move" src="../../../../assets/img/logo0.png" width="130" />
+        </p>
+      </div>
+      <div class="modal-body">
+        <div class="col text-right left-side">
+          <form novalidate #fo="ngForm" (ngSubmit)="mySubmit(fo)">
+            <div class="form-group">
+              <div class="row justify-content-between">
+                <div class="col">
+                  <label for="email" class="white"><small>شهادة مدرب:</small></label>
+                </div>
+                <div class="col">
+                  <div *ngIf="myemail.errors?.required && myemail.touched" class="text-danger d-inline">
+                    <small>أدخل رقم الشهادة</small>
+                  </div>
+                </div>
+              </div>
+
+              <input type="email" name="email" id="email" placeholder="أدخل رقم الشهادة" class="form-control"
+                pattern="[a-zA-Z0-9]{5}$" [(ngModel)]="user.email" #myemail="ngModel" required>
+            </div>
+
+            <div class="form-group form-check">
+              <div *ngIf="myemail.errors?.pattern && myemail.touched" class="text-danger text-center"><small>أقل من خمسة
+                  أرقام</small></div>
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+      <div class="modal-footer mx-auto">
+        <a routerLink="#" class="btn btn-danger" data-toggle="modal" data-target="#trainer-r">بحث</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Trainer Certifcate Resulte -->
+<div class="modal fade" id="trainer-r" tabindex="-1" role="dialog" aria-labelledby="trainer-r" aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header mx-auto">
+        <p class="modal-title" id="techer-r">
+          <img class="rounded mx-auto d-block" alt="Logo Move" src="../../../../assets/img/logo0.png" width="130" />
+        </p>
+      </div>
+      <div class="modal-body">
+        <div class="col text-right left-side">
+          <form novalidate #fo="ngForm" (ngSubmit)="mySubmit(fo)">
+            <div class="form-group">
+              <div class="row justify-content-center">
+                <h4 class="text-danger">اسم المدرب</h4>
+              </div>
+              <div class="row justify-content-start">
+                <p class="text-dark">النتيجة:</p>
+              </div>
+              <div class="row justify-content-start">
+                <p class="text-dark">التقدير:</p>
+              </div>
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+      <div class="modal-footer mx-auto">
+        <button type="button" class="btn btn-secondary mr-auto btn-md" data-dismiss="modal">إغلاق</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Supervisor Certifcate Search -->
+<div class="modal fade" id="supervisor-c" tabindex="-1" role="dialog" aria-labelledby="supervisor-c" aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header mx-auto">
+        <p class="modal-title" id="supervisor-c">
+          <img class="rounded mx-auto d-block" alt="Logo Move" src="../../../../assets/img/logo0.png" width="130" />
+        </p>
+      </div>
+      <div class="modal-body">
+        <div class="col text-right left-side">
+          <form novalidate #fo="ngForm" (ngSubmit)="mySubmit(fo)">
+            <div class="form-group">
+              <div class="row justify-content-between">
+                <div class="col">
+                  <label for="email" class="white"><small>شهادة مشرف:</small></label>
+                </div>
+                <div class="col">
+                  <div *ngIf="myemail.errors?.required && myemail.touched" class="text-danger d-inline">
+                    <small>أدخل رقم الشهادة</small>
+                  </div>
+                </div>
+              </div>
+
+              <input type="email" name="email" id="email" placeholder="أدخل رقم الشهادة" class="form-control"
+                pattern="[a-zA-Z0-9]{5}$" [(ngModel)]="user.email" #myemail="ngModel" required>
+            </div>
+
+            <div class="form-group form-check">
+              <div *ngIf="myemail.errors?.pattern && myemail.touched" class="text-danger text-center"><small>أقل من خمسة
+                  أرقام</small></div>
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+      <div class="modal-footer mx-auto">
+        <a routerLink="#" class="btn btn-danger" data-toggle="modal" data-target="#supervisor-r">بحث</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Supervisor Certifcate Resulte -->
+<div class="modal fade" id="supervisor-r" tabindex="-1" role="dialog" aria-labelledby="supervisor-r" aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header mx-auto">
+        <p class="modal-title" id="techer-r">
+          <img class="rounded mx-auto d-block" alt="Logo Move" src="../../../../assets/img/logo0.png" width="130" />
+        </p>
+      </div>
+      <div class="modal-body">
+        <div class="col text-right left-side">
+          <form novalidate #fo="ngForm" (ngSubmit)="mySubmit(fo)">
+            <div class="form-group">
+              <div class="row justify-content-center">
+                <h4 class="text-danger">اسم المشرف</h4>
+              </div>
+              <div class="row justify-content-start">
+                <p class="text-dark">النتيجة:</p>
+              </div>
+              <div class="row justify-content-start">
+                <p class="text-dark">التقدير:</p>
+              </div>
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+      <div class="modal-footer mx-auto">
+        <button type="button" class="btn btn-secondary mr-auto btn-md" data-dismiss="modal">إغلاق</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Training License Search -->
+<div class="modal fade" id="training-l-s" tabindex="-1" role="dialog" aria-labelledby="training-l-s" aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header mx-auto">
+        <p class="modal-title" id="training-l-s">
+          <img class="rounded mx-auto d-block" alt="Logo Move" src="../../../../assets/img/logo0.png" width="130" />
+        </p>
+      </div>
+      <div class="modal-body">
+        <div class="col text-right left-side">
+          <form novalidate #fo="ngForm" (ngSubmit)="mySubmit(fo)">
+            <div class="form-group">
+              <div class="row justify-content-between">
+                <div class="col">
+                  <label for="email" class="white"><small>رخصة مدرب:</small></label>
+                </div>
+                <div class="col">
+                  <div *ngIf="myemail.errors?.required && myemail.touched" class="text-danger d-inline">
+                    <small>أدخل رقم الرخصة</small>
+                  </div>
+                </div>
+              </div>
+
+              <input type="email" name="email" id="email" placeholder="أدخل رقم الرخصة" class="form-control"
+                pattern="[a-zA-Z0-9]{5}$" [(ngModel)]="user.email" #myemail="ngModel" required>
+            </div>
+
+            <div class="form-group form-check">
+              <div *ngIf="myemail.errors?.pattern && myemail.touched" class="text-danger text-center"><small>أقل من خمسة
+                  أرقام</small></div>
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+      <div class="modal-footer mx-auto">
+        <a routerLink="#" class="btn btn-danger" data-toggle="modal" data-target="#training-l-r">بحث</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Training License Resulte -->
+<div class="modal fade" id="training-l-r" tabindex="-1" role="dialog" aria-labelledby="training-l-r" aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header mx-auto">
+        <p class="modal-title" id="training-l-r">
+          <img class="rounded mx-auto d-block" alt="Logo Move" src="../../../../assets/img/logo0.png" width="130" />
+        </p>
+      </div>
+      <div class="modal-body">
+        <div class="col text-right left-side">
+          <form novalidate #fo="ngForm" (ngSubmit)="mySubmit(fo)">
+            <div class="form-group">
+              <div class="row justify-content-center">
+                <h4 class="text-danger">اسم المدرب</h4>
+              </div>
+              <div class="row justify-content-start">
+                <p class="text-dark">النتيجة:</p>
+              </div>
+              <div class="row justify-content-start">
+                <p class="text-dark">التقدير:</p>
+              </div>
+              <div class="row justify-content-start">
+                <p class="text-dark">تاريخ الانتهاء:</p>
+              </div>
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+      <div class="modal-footer mx-auto">
+        <button type="button" class="btn btn-secondary mr-auto btn-md" data-dismiss="modal">إغلاق</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- Common Questions -->
+
+<div class="modal fade" id="common-q" tabindex="-1" role="dialog" aria-labelledby="common-q" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-right">
+        <p class="modal-title" id="common-q">الأسئلة الشائعة:</p>
+      </div>
+      <div class="modal-body">
+        <div class="row justify-content-end">
+          <div class="col text-right">
+
+            <ul class="list-group">
+              
+                  <div class="mb-2">
+                      <button type="button" class="list-group-item list-group-item-action active text-primary btn-light" data-toggle="collapse"
+                      data-target="#questions-0" aria-expanded="false" aria-controls="questions-0">ما هي قنوات التواصل مع مركز تبيان؟</button>
+                    <div class="collapse" id="questions-0">
+                      <div class="card card-body">
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil
+                        anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mb-2">
+                      <button type="button" class="list-group-item list-group-item-action active text-primary btn-light" data-toggle="collapse"
+                      data-target="#questions-1" aria-expanded="false" aria-controls="questions-1">كيف أتقدم بطلب فتح حلقة؟</button>
+                    <div class="collapse" id="questions-1">
+                      <div class="card card-body">
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil
+                        anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mb-2">
+                      <button type="button" class="list-group-item list-group-item-action active text-primary btn-light" data-toggle="collapse"
+                      data-target="#questions-2" aria-expanded="false" aria-controls="questions-2">كيف يمكن الاستعلام الشهادات ورخص التدريب؟</button>
+                    <div class="collapse" id="questions-2">
+                      <div class="card card-body">
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil
+                        anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mb-2">
+                      <button type="button" class="list-group-item list-group-item-action active text-primary btn-light" data-toggle="collapse"
+                      data-target="#questions-3" aria-expanded="false" aria-controls="questions-3"> كيف يمكن الاطلاع على كل جديد في مركز تبيان؟</button>
+                    <div class="collapse" id="questions-3">
+                      <div class="card card-body">
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil
+                        anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mb-2">
+                      <button type="button" class="list-group-item list-group-item-action active text-primary btn-light" data-toggle="collapse"
+                      data-target="#questions-4" aria-expanded="false" aria-controls="questions-4">ما هي قنوات التواصل مع مركز تبيان؟</button>
+                    <div class="collapse" id="questions-4">
+                      <div class="card card-body">
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil
+                        anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mb-2">
+                      <button type="button" class="list-group-item list-group-item-action active text-primary btn-light" data-toggle="collapse"
+                      data-target="#questions-5" aria-expanded="false" aria-controls="questions-5">ما هي قنوات التواصل مع مركز تبيان؟</button>
+                    <div class="collapse" id="questions-5">
+                      <div class="card card-body">
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil
+                        anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mb-2">
+                      <button type="button" class="list-group-item list-group-item-action active text-primary btn-light" data-toggle="collapse"
+                      data-target="#questions-6" aria-expanded="false" aria-controls="questions-6">ما هي قنوات التواصل مع مركز تبيان؟</button>
+                    <div class="collapse" id="questions-6">
+                      <div class="card card-body">
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil
+                        anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mb-2">
+                      <button type="button" class="list-group-item list-group-item-action active text-primary btn-light" data-toggle="collapse"
+                      data-target="#questions-7" aria-expanded="false" aria-controls="questions-7">ما هي قنوات التواصل مع مركز تبيان؟</button>
+                    <div class="collapse" id="questions-7">
+                      <div class="card card-body">
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil
+                        anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                      </div>
+                    </div>
+                  </div>
+              
+              
+            </ul>
+
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer mx-auto">
+        <button type="button" class="btn btn-secondary mr-auto btn-md" data-dismiss="modal">إغلاق</button>
+
       </div>
     </div>
   </div>

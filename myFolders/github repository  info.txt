@@ -1,0 +1,42 @@
+create a new repository
+
+git init
+git add .
+git commit -m "right your commit"
+git config --global user.name/email ""
+git remote add origin (your link)
+git push (-u) origin master
+------------------------------------
+push an existing repository
+
+git add .
+git commit -m "right your commit"
+git push (-u) origin master
+-------------------------------------------
+pull existing repository
+git pull origin master
+--------------------------------------
+remove file
+git rm -r --cached (file name)
+git commit -m "right your commit"
+git push (-u) origin master
+----------------------------------------------
+get repostiory from github (for first time)
+git clone (link of repository)
+-------------------------------------------------
+branch
+git log
+git checkout (commit code)
+git checkout -b (new branch name) //create new branch 
+git branch // to check
+git push (-u) origin (new branch name)
+--------------------------------------------------
+change between branches
+git branch -a // to check
+git checkout -b '(branck name)' '(dirction branck link)'
+------------------------------------------------
+reback branch
+git checkout master
+-------------------------------------------
+general
+git status

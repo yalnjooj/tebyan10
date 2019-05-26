@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule }   from '@angular/forms';
+
 import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
 
 import { AppComponent } from './app.component';
@@ -16,7 +18,8 @@ import { ErrorRedirectComponent } from './components/generalComponents/error-red
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SlimLoadingBarModule
+    SlimLoadingBarModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
