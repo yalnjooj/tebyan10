@@ -6,12 +6,16 @@
 
 @font-face {
   font-family: 'Cairo';
-  src:  url('./assets/fonts/ciro/Cairo-Bold.ttf') format('truetype');
+  src:  url('./assets/fonts/Cairo-Regular.ttf') format('truetype');
 }
 
 html, body{
-    font-family: "Cairo", serif;
     height:100%;
+    font-size: 15.4px;
+}
+
+app-root{
+  font-family: "Cairo";
 }
 
 

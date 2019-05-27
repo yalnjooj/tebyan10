@@ -1,0 +1,61 @@
+<div class="row">
+    <!-- ----------------------    new certificats  ------------------------------- -->
+    <div class="col">
+        <form class="col-8 mx-auto mt-5">
+            <h5 class="text-center">إدخال شهادة جديد</h5>
+            <div class="form-row">
+                <div class="form-group col">
+                    <label for="accType"> اختر نوع الشهادة</label>
+                    <select id="accType" class="form-control">
+                        <option selected>شهادة معلم</option>
+                        <option>شهادة مدرب</option>
+                        <option>شهادة مشرف</option>
+                    </select>
+                </div>
+                <div class="form-group col">
+                    <label for="accName">الاسم</label>
+                    <input type="text" class="form-control" id="accName" placeholder="الاسم">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="email">التقدير</label>
+                    <input type="text" class="form-control" id="email" placeholder="التقدير">
+                </div>
+                <div class="form-group col-md-6">
+                        <label for="email">النسبة</label>
+                        <input type="text" class="form-control" id="email" placeholder="النسبة">
+                    </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">حفظ</button>
+
+        </form>
+    </div>
+
+    <!-- ----------------------    renew license  ------------------------------- -->
+    <div class="col">
+            <form class="col-8 mx-auto mt-5">
+                <h5 class="text-center">تجديد رخصة مدرب</h5>
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label for="accType"> اختر الاسم</label>
+                        <select id="accType" class="form-control">
+                            <option selected>عمر</option>
+                            <option>فراس</option>
+                            <option>انمار</option>
+                        </select>
+                    </div>
+                    <div class="form-group col">
+                        <label for="accName">تاريخ التجديد</label>
+                        <input type="date" class="form-control" id="accName">
+                    </div>
+                </div>
+    
+    
+                <button type="submit" class="btn btn-primary">تجديد</button>
+    
+            </form>
+        </div>
+</div>
