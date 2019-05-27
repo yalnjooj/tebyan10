@@ -1,0 +1,16 @@
+<nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <a class="nav-item nav-link active" id="nav-new-tab" data-toggle="tab" href="#nav-new" role="tab" aria-controls="nav-new" aria-selected="true">حساب جديد</a>
+      <a class="nav-item nav-link" id="nav-admin-tab" data-toggle="tab" href="#nav-admin" role="tab" aria-controls="nav-admin" aria-selected="false">حساب الاداريين</a>
+      <a class="nav-item nav-link" id="nav-inst-tab" data-toggle="tab" href="#nav-inst" role="tab" aria-controls="nav-inst" aria-selected="false">حساب الجهات</a>
+      <a class="nav-item nav-link" id="nav-trann-tab" data-toggle="tab" href="#nav-trann" role="tab" aria-controls="nav-trann" aria-selected="false">حساب المدربين</a>
+      <a class="nav-item nav-link" id="nav-SF-tab" data-toggle="tab" href="#nav-SF" role="tab" aria-controls="nav-SF" aria-selected="false">حساب المشرفين</a>
+    </div>
+  </nav>
+  <div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-new" role="tabpanel" aria-labelledby="nav-new-tab"><app-registration></app-registration></div>
+    <div class="tab-pane fade" id="nav-admin" role="tabpanel" aria-labelledby="nav-admin-tab"><app-administration-acc></app-administration-acc></div>
+    <div class="tab-pane fade" id="nav-inst" role="tabpanel" aria-labelledby="nav-inst-tab"><app-inst-acc></app-inst-acc></div>
+    <div class="tab-pane fade" id="nav-trann" role="tabpanel" aria-labelledby="nav-trann-tab"><app-trann-acc></app-trann-acc></div>
+    <div class="tab-pane fade" id="nav-SF" role="tabpanel" aria-labelledby="nav-SF-tab"><app-sfacc></app-sfacc></div>
+  </div>

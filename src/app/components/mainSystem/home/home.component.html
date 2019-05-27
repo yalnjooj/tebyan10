@@ -1,0 +1,81 @@
+<app-navbar></app-navbar>
+
+<div class="container-fluid" id="containerHeight">
+    <div class="row mt-1 ml-1 mb-1" id="bodyRow-h">
+
+        <!-- ----------------------------     menu list     ------------------------------ -->
+        <div class="col-md-2 col-sm text-right">
+            <div class="list-group nav flex-column nav-pills" id="v-pills-tab" role="tablist"
+                aria-orientation="vertical">
+                <a class="list-group-item list-group-item-action active nav-link" id="pills-home-tab" data-toggle="pill"
+                    href="#pills-home" role="tab" aria-controls="home-tab" aria-selected="true">الرئيسية</a>
+                <a class="list-group-item list-group-item-action nav-link" id="pills-acounts-tab" data-toggle="pill"
+                    href="#pills-acounts" role="tab" aria-controls="acounts-tab" aria-selected="false">الحسابات</a>
+                <a class="list-group-item list-group-item-action nav-link" id="pills-orders-tab" data-toggle="pill"
+                    href="#pills-orders" role="tab" aria-controls="orders-tab" aria-selected="false">الطلبات</a>
+                <a class="list-group-item list-group-item-action nav-link" id="pills-courses-tab" data-toggle="pill"
+                    href="#pills-courses" role="tab" aria-controls="courses-tab" aria-selected="false">الدورات</a>
+                <a class="list-group-item list-group-item-action nav-link" id="pills-education-tab" data-toggle="pill"
+                    href="#pills-education" role="tab" aria-controls="education-tab" aria-selected="false">قسم
+                    التعليم</a>
+                <a class="list-group-item list-group-item-action nav-link" id="pills-development-tab" data-toggle="pill"
+                    href="#pills-development" role="tab" aria-controls="development-tab" aria-selected="false">قسم
+                    التدريب والتطوير</a>
+                <a class="list-group-item list-group-item-action nav-link" id="pills-media-tab" data-toggle="pill"
+                    href="#pills-media" role="tab" aria-controls="media-tab" aria-selected="false">قسم الاعلام</a>
+                <a class="list-group-item list-group-item-action nav-link" id="pills-certification-tab"
+                    data-toggle="pill" href="#pills-certification" role="tab" aria-controls="certification-tab"
+                    aria-selected="false">الشهادات</a>
+                <a class="list-group-item list-group-item-action nav-link" id="pills-reports-tab" data-toggle="pill"
+                    href="#pills-reports" role="tab" aria-controls="reports-tab" aria-selected="false">التقارير</a>
+                <a class="list-group-item list-group-item-action nav-link" id="pills-questions-tab" data-toggle="pill"
+                    href="#pills-questions" role="tab" aria-controls="questions-tab" aria-selected="false">الاسئلة
+                    الشائعة</a>
+            </div>
+        </div>
+
+
+        <!-- ----------------------------     body     ------------------------------ -->
+        <div class="col-md col-sm border text-right">
+            <div class="tab-content" id="v-pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                    home
+                </div>
+                <div class="tab-pane fade" id="pills-acounts" role="tabpanel" aria-labelledby="pills-acounts-tab">
+                    <app-account-body></app-account-body>
+                </div>
+                <div class="tab-pane fade" id="pills-orders" role="tabpanel" aria-labelledby="pills-orders-tab">
+                    orders
+                </div>
+                <div class="tab-pane fade" id="pills-courses" role="tabpanel" aria-labelledby="pills-courses-tab">
+                    courses
+                </div>
+                <div class="tab-pane fade" id="pills-education" role="tabpanel" aria-labelledby="pills-education-tab">
+                    education
+                </div>
+                <div class="tab-pane fade" id="pills-development" role="tabpanel"
+                    aria-labelledby="pills-development-tab">
+                    development
+                </div>
+                <div class="tab-pane fade" id="pills-media" role="tabpanel" aria-labelledby="pills-media-tab">
+                    media
+                </div>
+                <div class="tab-pane fade" id="pills-certification" role="tabpanel"
+                    aria-labelledby="pills-certification-tab">
+                    certification
+                </div>
+                <div class="tab-pane fade" id="pills-reports" role="tabpanel" aria-labelledby="pills-reports-tab">
+                    reports
+                </div>
+                <div class="tab-pane fade" id="pills-questions" role="tabpanel" aria-labelledby="pills-questions-tab">
+                    questions
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <app-footer></app-footer>
+</div>
