@@ -1,8 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule }   from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
+import { NgbdDatepickerIslamicumalqura } from './Datepicker/Islamic_Umm_al-Qura/datepicker-islamicumalqura';
+import { NgbdDatepickerIslamiccivil } from './Datepicker/Islamic_Civil/datepicker-islamiccivil';
+import { datapickerDropdownCivil } from './Datepicker/Islamic_Civil/datapicker-dropdown/datapicker-dropdown';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -51,14 +55,19 @@ import { ViowCQComponent } from './components/mainSystem/body/CQ/viow-cq/viow-cq
     SuperFCerComponent,
     CQComponent,
     AddCQComponent,
-    ViowCQComponent
+    ViowCQComponent,
+    NgbdDatepickerIslamicumalqura,
+    NgbdDatepickerIslamiccivil,
+    datapickerDropdownCivil
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SlimLoadingBarModule,
-    FormsModule
+    FormsModule,
+    NgbModule
   ],
+  exports: [NgbdDatepickerIslamicumalqura, NgbdDatepickerIslamiccivil],
   providers: [],
   bootstrap: [AppComponent]
 })

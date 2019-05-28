@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbdDatepickerIslamiccivil } from '../../../../../Datepicker/Islamic_Civil/datepicker-islamiccivil';
 
 @Component({
   selector: 'app-new-cer-lic',
