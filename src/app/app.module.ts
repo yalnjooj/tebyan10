@@ -3,10 +3,13 @@ import { NgModule } from '@angular/core';
 import { FormsModule }   from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { DateserverService } from './service/dateserver.service';
+
 import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
 import { NgbdDatepickerIslamicumalqura } from './Datepicker/Islamic_Umm_al-Qura/datepicker-islamicumalqura';
 import { NgbdDatepickerIslamiccivil } from './Datepicker/Islamic_Civil/datepicker-islamiccivil';
 import { datapickerDropdownCivil } from './Datepicker/Islamic_Civil/datapicker-dropdown/datapicker-dropdown';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -65,10 +68,11 @@ import { ViowCQComponent } from './components/mainSystem/body/CQ/viow-cq/viow-cq
     AppRoutingModule,
     SlimLoadingBarModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule
   ],
-  exports: [NgbdDatepickerIslamicumalqura, NgbdDatepickerIslamiccivil],
-  providers: [],
+  exports: [],
+  providers: [DateserverService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

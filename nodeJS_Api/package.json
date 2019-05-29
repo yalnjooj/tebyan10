@@ -1,0 +1,23 @@
+{
+  "name": "tebyan10",
+  "version": "1.0.0",
+  "description": "tebyan10 back end",
+  "main": "app",
+  "scripts": {
+    "test": "this progect use node js and express"
+  },
+  "keywords": [
+    "tebyan"
+  ],
+  "author": "omar noh",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.5.11"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}

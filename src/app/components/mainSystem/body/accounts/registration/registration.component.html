@@ -1,38 +1,90 @@
-<form class="col-8 mx-auto mt-5">
-  
-    <div class="form-row">
-      <div class="form-group col">
-        <label for="accType"> اختر نوع الحساب</label>
-        <select id="accType" class="form-control">
-          <option>قسم التعليم</option>
-          <option>قسم التدريب والتطوير</option>
-          <option>قسم الاعلام</option>
-          <option selected>حساب جهة</option>
-          <option>حساب مدرب</option>
-          <option>حساب مشرف</option>
-        </select>
-      </div>
-      <div class="form-group col">
-        <label for="accName">اسم الحساب</label>
-        <input type="text" class="form-control" id="accName" placeholder="اسم الحساب">
-      </div>
+<form class="col-8 mx-auto mt-5" #fo="ngForm" (ngSubmit)="ngSubmit(fo)" novalidate>
+
+  <div class="form-row">
+    <div class="form-group col">
+      <label for="accType"> اختر نوع الحساب</label>
+      <select name="newaccType" ngModel class="form-control" required>
+        <option value="education">قسم التعليم</option>
+        <option value="development">قسم التدريب والتطوير</option>
+        <option value="media">قسم الاعلام</option>
+        <option value="institute">حساب جهة</option>
+        <option value="trainer">حساب مدرب</option>
+        <option value="supervisor">حساب مشرف</option>
+      </select>
+    </div>
+    <div class="form-group col">
+      <label for="newaccName">اسم المستخدم</label>
+      <input type="text" class="form-control" name="newaccName" ngModel #newaccName="ngModel" placeholder="اسم المستخدم"
+        required> <!--   (?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}    -->
     </div>
 
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="newemail">البريد الالكتروني</label>
-        <input type="email" class="form-control" id="newemail" placeholder="البريد الالكتروني">
-      </div>
-      <div class="form-group col-md-3">
-        <label for="inputPassword1">ادخل كلمة المرور</label>
-        <input type="password" class="form-control" id="inputPassword1" placeholder="ادخل كلمة المرور">
-      </div>
-      <div class="form-group col-md-3">
-        <label for="inputPassword2">تأكيد كلمة المرور</label>
-        <input type="password" class="form-control" id="inputPassword2" placeholder="تأكيد كلمة المرور">
-      </div>
-    </div>
+  </div>
 
-    <button type="submit" class="btn btn-primary">إنشاء حساب</button>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="newemail">البريد الالكتروني</label>
+      <input type="email" class="form-control" name="newemail" ngModel #newemail="ngModel"
+        placeholder="البريد الالكتروني" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" required>
+    </div>
+    <div class="form-group col-md-3">
+      <label for="inputPassword1">ادخل كلمة المرور</label>
+      <input type="password" class="form-control" name="inputPassword1" ngModel #inputPassword1="ngModel"
+        placeholder="ادخل كلمة المرور" pattern="(?=.*\d)(?=.*[a-z]).{5,}" required>
+    </div>
+    <div class="form-group col-md-3">
+      <label for="inputPassword2">تأكيد كلمة المرور</label>
+      <input type="password" class="form-control" name="inputPassword2" ngModel #inputPassword2="ngModel"
+        placeholder="تأكيد كلمة المرور" pattern="(?=.*\d)(?=.*[a-z]).{5,}" required>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary">إنشاء حساب</button>
+
+  <!-- validation -->
+  <div *ngIf="newaccName.errors?.required && newaccName.touched; then username"></div>
+  <div *ngIf="newemail.errors?.pattern && newemail.touched; then emailpattern"></div>
+  <div *ngIf="newemail.errors?.required && newemail.touched; then emailrequired"></div>
+  <div *ngIf="inputPassword1.errors?.pattern && inputPassword1.touched; then machpass"></div>
+  <div *ngIf="inputPassword2.errors?.pattern && inputPassword2.touched; then machpass"></div>
+
 
 </form>
+
+
+
+
+<!-- templates -->
+<ng-template #username>
+  <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+    <small>أدخل اسم المستخدم</small>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #emailpattern>
+  <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+    <small>صيغة البريد غير صحيحة !</small>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #emailrequired>
+  <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+    <small>أدخل البريد الالكتروني !</small>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+</ng-template>
+<ng-template #machpass>
+  <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+    <small>ادخل على الاقل خمس كراكترس بين حروف صغيرة وارقام !</small>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+</ng-template>
