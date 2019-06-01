@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { DateserverService } from './service/dateserver.service';
@@ -69,7 +69,9 @@ import { ViowCQComponent } from './components/mainSystem/body/CQ/viow-cq/viow-cq
     SlimLoadingBarModule,
     FormsModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [],
   providers: [DateserverService],

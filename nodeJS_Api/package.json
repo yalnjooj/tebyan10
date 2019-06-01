@@ -1,23 +1,19 @@
 {
-  "name": "tebyan10",
-  "version": "1.0.0",
-  "description": "tebyan10 back end",
-  "main": "app",
+  "name": "nodejs-api",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "test": "this progect use node js and express"
+    "start": "node ./bin/www"
   },
-  "keywords": [
-    "tebyan"
-  ],
-  "author": "omar noh",
-  "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.19.0",
+    "bcrypt": "^3.0.6",
+    "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
-    "express": "^4.17.1",
-    "mongoose": "^5.5.11"
-  },
-  "devDependencies": {
-    "nodemon": "^1.19.1"
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "hbs": "~4.0.4",
+    "http-errors": "~1.6.3",
+    "mongoose": "^5.5.12",
+    "morgan": "~1.9.1"
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router'
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { DateserverService } from '../../../../../service/dateserver.service';
 
 @Component({
@@ -9,31 +10,37 @@ import { DateserverService } from '../../../../../service/dateserver.service';
 })
 export class RegistrationComponent implements OnInit {
 
-  constructor(private DateserverService: DateserverService) {}
+  registerForm = new FormGroup({
+    newaccType: new FormControl(null, [Validators.required]),
+    newaccName: new FormControl(null, [Validators.required]),
+    newemail: new FormControl(null, [Validators.email, Validators.required]),
+    inputPassword1: new FormControl(null, [Validators.required]),
+    inputPassword2: new FormControl(null, [Validators.required])
+  }); 
 
-  
+  constructor(private DS: DateserverService, private _router: Router) { }
+
+
   ngOnInit() {
   }
 
-
-
-
- 
-
-// send data to the HTTP
-  ngSubmit(f: NgForm) {
-    if (f.valid) {
-      console.log(f.value);
-      this.DateserverService.addUser(f.value.newaccType, f.value.newaccName, f.value.newemail, f.value.inputPassword1)
-    }
-
-    else {
-      console.log("خطأ في الادخال");
-    }
-  }  
-  addUser(type, username, email, password) {
-    this.addUser(type, username, email, password)
+  moveToLogin() {
+    this._router.navigate(['/login']);
   }
+  register() {
+    if (!this.registerForm.valid || (this.registerForm.controls.inputPassword1.value != this.registerForm.controls.inputPassword2.value)) {
+      console.log('Invalid Form'); return;
+    }
+
+    this.DS.register(JSON.stringify(this.registerForm.value)).subscribe(
+      data=>{  this._router.navigate(['/home']);},  
+     error=> console.error(error)
+     
+    );
+    
+   // console.log(JSON.stringify(this.registerForm.value));
+  }
+
 
 
 
