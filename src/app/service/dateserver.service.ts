@@ -1,19 +1,63 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class DateserverService {
+  constructor(private _http:HttpClient) { }
 
-  constructor(private http: HttpClient) { }
-
-
-  register(body: any) {
-    return this.http.post('http://127.0.0.1:3000/users/register', body, {
-      observe: 'body',
-      headers: new HttpHeaders().append('Content-Type', 'application/json')
+  register(body:any){
+    return this._http.post('http://127.0.0.1:3000/users/register',body,{
+      observe:'body',
+      headers:new HttpHeaders().append('Content-Type','application/json')
     });
   }
+
+  login(body:any){
+    return this._http.post('http://127.0.0.1:3000/users/login',body,{
+      observe:'body',
+      withCredentials:true,
+      headers:new HttpHeaders().append('Content-Type','application/json')
+    });
+  }
+
+  user(){
+    return this._http.get('http://127.0.0.1:3000/users/user',{
+      observe:'body',
+      withCredentials:true,
+      headers:new HttpHeaders().append('Content-Type','application/json')
+    })
+  }
+
+  trainerSearch(data){
+    return this._http.post('http://127.0.0.1:3000/users/trainerSearch',data,{
+      observe:'body',
+      withCredentials:true,
+      headers:new HttpHeaders().append('Content-Type','application/json')
+    });      
+  }
+
+  insertQuestion(data){
+    return this._http.post('http://127.0.0.1:3000/users/insertQuestion',data,{
+      observe:'body',
+      withCredentials:true,
+      headers:new HttpHeaders().append('Content-Type','application/json')
+    });      
+  }
+
+  getAnwersQuestions(){
+    return this._http.get('http://127.0.0.1:3000/users/getAnwersQuestions',{
+      observe:'body',
+      withCredentials:true,
+      headers:new HttpHeaders().append('Content-Type','application/json')
+    });      
+  }
+
+  logout(){
+    return this._http.get('http://127.0.0.1:3000/users/logout',{
+      observe:'body',
+      withCredentials:true,
+      headers:new HttpHeaders().append('Content-Type','application/json')
+    })
+  }
+
 }
-  

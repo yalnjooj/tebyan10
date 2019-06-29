@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DateserverService } from '../../../../../service/dateserver.service';
 
 @Component({
   selector: 'app-viow-cq',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViowCQComponent implements OnInit {
 
-  constructor() { }
+  anwersQuestions: Object;
+
+
+  constructor( private serverData: DateserverService) { }
 
   ngOnInit() {
+    this.getAnwersQuestions();
   }
+
+  getAnwersQuestions() {
+    this.serverData.getAnwersQuestions()
+      .subscribe(
+        data => this.anwersQuestions = data,
+        error => console.error(error)
+      );
+  } 
 
 }

@@ -35,7 +35,6 @@ export class RegistrationComponent implements OnInit {
     this.DS.register(JSON.stringify(this.registerForm.value)).subscribe(
       data=>{  this._router.navigate(['/home']);},  
      error=> console.error(error)
-     
     );
     
    // console.log(JSON.stringify(this.registerForm.value));

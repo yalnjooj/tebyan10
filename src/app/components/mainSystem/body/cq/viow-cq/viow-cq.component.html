@@ -1,19 +1,16 @@
 <form class="col mt-3 border pt-2">
+  <div  *ngFor="let item of anwersQuestions">
   <div class="row">
     <div class="col">
       <div class="form-group">
         <label for="username" class="sr-only">السؤال</label>
-        <input type="text" class="form-control" placeholder="السؤال" />
+        <input type="text" value="{{item.quistion}}" class="form-control" placeholder="السؤال" />
       </div>
     </div>
     <div class="col-1">
-      <div class="form-group">
-        <input type="submit" class="btn btn-warning" value="تعديل" />
-      </div>
-    </div>
-    <div class="col-1">
-      <div class="form-group">
-        <input type="submit" class="btn btn-success mx-sm-2" value="حفظ" />
+      <div class="from-group">
+        <label for="checkbox" class="sr-only">عرض</label>
+        <input type="checkbox" id="checkbox" class="form-control mx-sm-2" name="active" value="{{item.isView}}" />
       </div>
     </div>
     <div class="col-1">
@@ -22,20 +19,19 @@
       </div>
     </div>
     <div class="col-1">
-      <div class="from-group">
-        <label for="checkbox" class="sr-only">عرض</label>
-        <input type="checkbox" id="checkbox" class="form-control mx-sm-2" name="active" value="active" />
+      <div class="form-group">
+        <input type="submit" class="btn btn-success mx-sm-2" value="حفظ" />
       </div>
     </div>
   </div>
 
- <div class="row">
+  <div class="row">
     <div class="form-group col">
-        <label for="exampleFormControlTextarea1" class="sr-only">الاجابة</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"></textarea>
- </div>
+      <label for="exampleFormControlTextarea1" class="sr-only">الاجابة</label>
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="1">{{item.answer}}</textarea>
+    </div>
   </div>
 
 
-
+</div>
 </form>

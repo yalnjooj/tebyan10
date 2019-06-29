@@ -1,3 +1,4 @@
+
 <!-- -----------------------------------------   Navpar  --------------------------------------- -->
 <nav id="navbar-h" class="navbar navbar-expand-lg navbar-dark bg-dark" style="z-index: 100;">
   <button class="btn btn-outline-secondary navbar-brand" type="button">
@@ -8,15 +9,18 @@
   <a href="#" class="navbar-brand">
     منصة تبيان
   </a>
+  <a href="#" class="navbar-brand">
+   
+  </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
     aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+    <span class="navbar-toggler-icon">0000</span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <a routerLink="" class="nav nav-link" data-toggle="modal" data-target="#logIn">الإدارة</a>
+        <a routerLink="" class="nav nav-link" data-toggle="modal" data-target="#logIn">{{posts.userType}}</a>
       </li>
 
     </ul>
@@ -29,7 +33,7 @@
         </a>
       </li>
       <li class="nav-item active">
-        <a routerLink="" class="btn btn-outline-secondary navbar-brand">
+        <a class="btn btn-outline-secondary navbar-brand" (click)="logout()">
           <span style="font-size: 1em; color: white;">
             <i class="fa fa-sign-out" aria-hidden="true"></i>
           </span>

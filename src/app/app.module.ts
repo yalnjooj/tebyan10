@@ -1,15 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { DateserverService } from './service/dateserver.service';
 
 import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
 import { NgbdDatepickerIslamicumalqura } from './Datepicker/Islamic_Umm_al-Qura/datepicker-islamicumalqura';
 import { NgbdDatepickerIslamiccivil } from './Datepicker/Islamic_Civil/datepicker-islamiccivil';
 import { datapickerDropdownCivil } from './Datepicker/Islamic_Civil/datapicker-dropdown/datapicker-dropdown';
 import { HttpClientModule } from '@angular/common/http';
+import { DateserverService } from './service/dateserver.service';
+import { TransferdataService } from './service/transferdata.service';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -34,7 +35,7 @@ import { SuperFCerComponent } from './components/mainSystem/body/cANDlic/certefi
 import { CQComponent } from './components/mainSystem/body/cq/cq.component';
 import { AddCQComponent } from './components/mainSystem/body/CQ/add-cq/add-cq.component';
 import { ViowCQComponent } from './components/mainSystem/body/CQ/viow-cq/viow-cq.component';
-
+import { TrasferOfDataService } from './service/trasfer-of-data.service'
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,14 +68,13 @@ import { ViowCQComponent } from './components/mainSystem/body/CQ/viow-cq/viow-cq
     BrowserModule,
     AppRoutingModule,
     SlimLoadingBarModule,
-    FormsModule,
     NgbModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule
   ],
   exports: [],
-  providers: [DateserverService],
+  providers: [DateserverService, TransferdataService, TrasferOfDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

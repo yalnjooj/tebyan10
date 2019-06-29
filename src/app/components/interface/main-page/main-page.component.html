@@ -30,7 +30,7 @@
     </ul>
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a routerLink="" class="nav nav-link" data-toggle="modal" data-target="#common-q">الاسئلة الشائعة</a>
+        <a routerLink="" class="nav nav-link" (click)="getAnwersQuestions()" data-toggle="modal" data-target="#common-q">الاسئلة الشائعة</a>
       </li>
     </ul>
   </div>
@@ -128,22 +128,20 @@
       </div>
       <div class="modal-body">
         <div class="col text-right left-side">
-          <form novalidate #fo="ngForm" (ngSubmit)="mySubmit(fo)">
+          <form [formGroup]="loginForm">
             <div class="form-group">
               <div class="row justify-content-between">
                 <div class="col-4">
                   <label for="email" class="white"><small>البريد الإلكتروني:</small></label>
                 </div>
                 <div class="col-4">
-                  <div *ngIf="myemail.errors?.required && myemail.touched" class="text-danger d-inline">
-                    <small>أدخل البريد الإلكتروني</small>
+                  <div class="text-danger d-inline">
+                    <small>{{isActiveMessage}}</small>
                   </div>
                 </div>
               </div>
-
-              <input type="email" name="email" placeholder="أدخل بريدك الإلكتروني" class="form-control"
-                pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" [(ngModel)]="user.email" #myemail="ngModel"
-                required>
+              <input type="email" name="email" formControlName="email" placeholder="أدخل بريدك الإلكتروني"
+                class="form-control">
             </div>
             <div class="form-group">
               <div class="row justify-content-between">
@@ -151,56 +149,44 @@
                   <label for="pwd" class="white">كلمة المرور:</label>
                 </div>
                 <div class="col-4">
-                  <div *ngIf="mypwd.errors?.required && mypwd.touched" class="text-danger d-inline"><small>أدخل كلمة
-                      المرور</small></div>
-
+                  <div class="text-danger d-inline"><small>...</small></div>
                 </div>
               </div>
 
-              <input type="password" id="pwd" name="pwd" placeholder="أدخل كملة المرور" class="form-control"
-                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" [(ngModel)]="user.pwd" #mypwd="ngModel" required>
+              <input type="password" name="password" formControlName="password" placeholder="أدخل كملة المرور"
+                class="form-control">
             </div>
             <div class="form-group form-check">
               <small>
                 <a routerLink="#" class="nav nav-link" data-toggle="modal" data-target="#sendpass">هل فقدت كلمة
                   مرورك؟</a>
               </small>
-              <div *ngIf="myemail.errors?.pattern && myemail.touched" class="text-danger text-center"><small>صيغة البريد
-                  الالكتروني غير صحيحة!</small></div>
             </div>
-
-
-
-            <div *ngIf="mypwd.errors?.pattern && mypwd.touched" class="text-danger text-left"><small>Must contain at
-                least one
-                number and
-                one uppercase and lowercase letter, and at least 8 or more characters</small></div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary ml-auto btn-md" (click)="login()">دخول</button>
+              <button type="button" class="btn btn-secondary mr-auto btn-md" data-dismiss="modal" aria-label="Close"
+                #closeBtn>إلغاء</button>
+            </div>
           </form>
 
-          {{verfiyForm}}
-
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary ml-auto btn-md">دخول</button>
-        <button type="button" class="btn btn-secondary mr-auto btn-md" data-dismiss="modal">إلغاء</button>
       </div>
     </div>
   </div>
 </div>
 
 <!-- Resend password to email -->
-<div class="modal fade" id="sendpass" tabindex="-1" role="dialog" aria-labelledby="logInModal" aria-hidden="true">
+<div class="modal fade" id="sendpass" tabindex="-1" role="dialog" aria-labelledby="resedpasModal" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header mx-auto">
-        <p class="modal-title" id="logInModal">
+        <p class="modal-title" id="resedpasModal">
           <img class="rounded mx-auto d-block" alt="Logo Move" src="../../../../assets/img/logo0.png" width="130" />
         </p>
       </div>
       <div class="modal-body">
         <div class="col text-right left-side">
-          <form novalidate #fo="ngForm" (ngSubmit)="mySubmit(fo)">
+          <form>
             <div class="form-group">
               <div class="row mb-3">
                 <div class="col">
@@ -215,28 +201,23 @@
                   <label for="email" class="white"><small>البريد الإلكتروني:</small></label>
                 </div>
                 <div class="col-4">
-                  <div *ngIf="myemail.errors?.required && myemail.touched" class="text-danger d-inline">
+                  <div class="text-danger d-inline">
                     <small>أدخل البريد الإلكتروني</small>
                   </div>
                 </div>
               </div>
 
-              <input type="email" name="email" placeholder="أدخل بريدك الإلكتروني" class="form-control"
-                pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" [(ngModel)]="user.email" #myemail="ngModel"
-                required>
+              <input type="email" name="email" placeholder="أدخل بريدك الإلكتروني" class="form-control">
             </div>
-            <small class="text-danger"><b>خطأ:</b> لا يوجد مستخدم مسجل بهذا البريد الإلكتروني
-            </small>
+            <small class="text-danger"><b>خطأ:</b> ... </small>
             <div class="form-group form-check">
 
-              <div *ngIf="myemail.errors?.pattern && myemail.touched" class="text-danger text-center"><small>صيغة البريد
-                  الالكتروني غير صحيحة!</small></div>
+              <div class="text-danger text-center"><small>...</small></div>
 
             </div>
 
           </form>
 
-          {{verfiyForm}}
 
         </div>
       </div>
@@ -259,35 +240,34 @@
       </div>
       <div class="modal-body">
         <div class="col text-right left-side">
-          <form novalidate #fo="ngForm" (ngSubmit)="mySubmit(fo)">
+          <form>
             <div class="form-group">
               <div class="row justify-content-between">
                 <div class="col">
                   <label for="email" class="white"><small>شهادة معلم:</small></label>
                 </div>
                 <div class="col">
-                  <div *ngIf="myemail.errors?.required && myemail.touched" class="text-danger d-inline">
+                  <div class="text-danger d-inline">
                     <small>أدخل رقم الشهادة</small>
                   </div>
                 </div>
               </div>
 
-              <input type="email" name="email" placeholder="أدخل رقم الشهادة" class="form-control"
-                pattern="[a-zA-Z0-9]{5}$" [(ngModel)]="user.email" #myemail="ngModel" required>
+              <input type="email" name="email" placeholder="أدخل رقم الشهادة" class="form-control">
             </div>
 
             <div class="form-group form-check">
-              <div *ngIf="myemail.errors?.pattern && myemail.touched" class="text-danger text-center"><small>أقل من خمسة
+              <div class="text-danger text-center"><small>أقل من خمسة
                   أرقام</small></div>
             </div>
-
+            <div class="modal-footer mx-auto">
+              <a routerLink="#" class="btn btn-danger" data-toggle="modal" (click)="ok" data-target="#techer-r">بحث</a>
+            </div>
           </form>
 
         </div>
       </div>
-      <div class="modal-footer mx-auto">
-        <a routerLink="#" class="btn btn-danger" data-toggle="modal" data-target="#techer-r">بحث</a>
-      </div>
+
     </div>
   </div>
 </div>
@@ -303,7 +283,7 @@
       </div>
       <div class="modal-body">
         <div class="col text-right left-side">
-          <form novalidate #fo="ngForm" (ngSubmit)="mySubmit(fo)">
+          <form>
             <div class="form-group">
               <div class="row justify-content-center">
                 <h4 class="text-danger">اسم المعلم</h4>
@@ -315,14 +295,14 @@
                 <p class="text-dark">التقدير:</p>
               </div>
             </div>
-
+            <div class="modal-footer mx-auto">
+              <button type="button" class="btn btn-secondary mr-auto btn-md" data-dismiss="modal">إغلاق</button>
+            </div>
           </form>
 
         </div>
       </div>
-      <div class="modal-footer mx-auto">
-        <button type="button" class="btn btn-secondary mr-auto btn-md" data-dismiss="modal">إغلاق</button>
-      </div>
+
     </div>
   </div>
 </div>
@@ -338,35 +318,35 @@
       </div>
       <div class="modal-body">
         <div class="col text-right left-side">
-          <form novalidate #fo="ngForm" (ngSubmit)="mySubmit(fo)">
+          <form [formGroup]="trainerForm">
             <div class="form-group">
               <div class="row justify-content-between">
                 <div class="col">
                   <label for="email" class="white"><small>شهادة مدرب:</small></label>
                 </div>
                 <div class="col">
-                  <div *ngIf="myemail.errors?.required && myemail.touched" class="text-danger d-inline">
-                    <small>أدخل رقم الشهادة</small>
+                  <div class="text-danger d-inline">
+                    <small>{{noValue}}</small>
                   </div>
                 </div>
               </div>
 
-              <input type="email" name="email" placeholder="أدخل رقم الشهادة" class="form-control"
-                pattern="[a-zA-Z0-9]{5}$" [(ngModel)]="user.email" #myemail="ngModel" required>
+              <input type="number" formControlName="trainerFild" name="trainerFild" placeholder="أدخل رقم الشهادة"
+                class="form-control">
             </div>
 
             <div class="form-group form-check">
-              <div *ngIf="myemail.errors?.pattern && myemail.touched" class="text-danger text-center"><small>أقل من خمسة
-                  أرقام</small></div>
+              <div class="text-danger text-center"><small>{{searchError}}</small></div>
             </div>
-
+            <div class="modal-footer mx-auto">
+              <a routerLink="#" class="btn btn-danger" (click)="trainerFild()" data-toggle="modal"
+                data-target="#trainer-r">بحث</a>
+            </div>
           </form>
 
         </div>
       </div>
-      <div class="modal-footer mx-auto">
-        <a routerLink="#" class="btn btn-danger" data-toggle="modal" data-target="#trainer-r">بحث</a>
-      </div>
+
     </div>
   </div>
 </div>
@@ -382,26 +362,27 @@
       </div>
       <div class="modal-body">
         <div class="col text-right left-side">
-          <form novalidate #fo="ngForm" (ngSubmit)="mySubmit(fo)">
+          <form>
             <div class="form-group">
               <div class="row justify-content-center">
-                <h4 class="text-danger">اسم المدرب</h4>
+                <h4 class="text-danger">{{searchResult.trainersName}}</h4>
               </div>
               <div class="row justify-content-start">
-                <p class="text-dark">النتيجة:</p>
+                <p class="text-dark">{{searchResult.mark}}</p>
               </div>
               <div class="row justify-content-start">
-                <p class="text-dark">التقدير:</p>
+                <p class="text-dark">{{searchResult.grade}}</p>
               </div>
             </div>
-
+            <div class="modal-footer mx-auto">
+              <button type="button" class="btn btn-secondary mr-auto btn-md" (click)="clear()"
+                data-dismiss="modal">إغلاق</button>
+            </div>
           </form>
 
         </div>
       </div>
-      <div class="modal-footer mx-auto">
-        <button type="button" class="btn btn-secondary mr-auto btn-md" data-dismiss="modal">إغلاق</button>
-      </div>
+
     </div>
   </div>
 </div>
@@ -417,35 +398,34 @@
       </div>
       <div class="modal-body">
         <div class="col text-right left-side">
-          <form novalidate #fo="ngForm" (ngSubmit)="mySubmit(fo)">
+          <form>
             <div class="form-group">
               <div class="row justify-content-between">
                 <div class="col">
                   <label for="email" class="white"><small>شهادة مشرف:</small></label>
                 </div>
                 <div class="col">
-                  <div *ngIf="myemail.errors?.required && myemail.touched" class="text-danger d-inline">
+                  <div class="text-danger d-inline">
                     <small>أدخل رقم الشهادة</small>
                   </div>
                 </div>
               </div>
 
-              <input type="email" name="email" placeholder="أدخل رقم الشهادة" class="form-control"
-                pattern="[a-zA-Z0-9]{5}$" [(ngModel)]="user.email" #myemail="ngModel" required>
+              <input type="email" name="email" placeholder="أدخل رقم الشهادة" class="form-control" />
             </div>
 
             <div class="form-group form-check">
-              <div *ngIf="myemail.errors?.pattern && myemail.touched" class="text-danger text-center"><small>أقل من خمسة
+              <div class="text-danger text-center"><small>أقل من خمسة
                   أرقام</small></div>
             </div>
-
+            <div class="modal-footer mx-auto">
+              <a routerLink="#" class="btn btn-danger" data-toggle="modal" data-target="#supervisor-r">بحث</a>
+            </div>
           </form>
 
         </div>
       </div>
-      <div class="modal-footer mx-auto">
-        <a routerLink="#" class="btn btn-danger" data-toggle="modal" data-target="#supervisor-r">بحث</a>
-      </div>
+
     </div>
   </div>
 </div>
@@ -461,7 +441,7 @@
       </div>
       <div class="modal-body">
         <div class="col text-right left-side">
-          <form novalidate #fo="ngForm" (ngSubmit)="mySubmit(fo)">
+          <form>
             <div class="form-group">
               <div class="row justify-content-center">
                 <h4 class="text-danger">اسم المشرف</h4>
@@ -473,15 +453,14 @@
                 <p class="text-dark">التقدير:</p>
               </div>
             </div>
-
+            <div class="modal-footer mx-auto">
+              <button type="button" class="btn btn-secondary mr-auto btn-md" data-dismiss="modal">إغلاق</button>
+            </div>
           </form>
 
         </div>
       </div>
-      <div class="modal-footer mx-auto">
-        <button type="button" class="btn btn-secondary mr-auto btn-md" data-dismiss="modal">إغلاق</button>
 
-      </div>
     </div>
   </div>
 </div>
@@ -497,35 +476,34 @@
       </div>
       <div class="modal-body">
         <div class="col text-right left-side">
-          <form novalidate #fo="ngForm" (ngSubmit)="mySubmit(fo)">
+          <form>
             <div class="form-group">
               <div class="row justify-content-between">
                 <div class="col">
                   <label for="email" class="white"><small>رخصة مدرب:</small></label>
                 </div>
                 <div class="col">
-                  <div *ngIf="myemail.errors?.required && myemail.touched" class="text-danger d-inline">
+                  <div class="text-danger d-inline">
                     <small>أدخل رقم الرخصة</small>
                   </div>
                 </div>
               </div>
 
-              <input type="email" name="email" placeholder="أدخل رقم الرخصة" class="form-control"
-                pattern="[a-zA-Z0-9]{5}$" [(ngModel)]="user.email" #myemail="ngModel" required>
+              <input type="email" name="email" placeholder="أدخل رقم الرخصة" class="form-control">
             </div>
 
             <div class="form-group form-check">
-              <div *ngIf="myemail.errors?.pattern && myemail.touched" class="text-danger text-center"><small>أقل من خمسة
+              <div class="text-danger text-center"><small>أقل من خمسة
                   أرقام</small></div>
             </div>
-
+            <div class="modal-footer mx-auto">
+              <a routerLink="#" class="btn btn-danger" data-toggle="modal" data-target="#training-l-r">بحث</a>
+            </div>
           </form>
 
         </div>
       </div>
-      <div class="modal-footer mx-auto">
-        <a routerLink="#" class="btn btn-danger" data-toggle="modal" data-target="#training-l-r">بحث</a>
-      </div>
+
     </div>
   </div>
 </div>
@@ -541,7 +519,7 @@
       </div>
       <div class="modal-body">
         <div class="col text-right left-side">
-          <form novalidate #fo="ngForm" (ngSubmit)="mySubmit(fo)">
+          <form>
             <div class="form-group">
               <div class="row justify-content-center">
                 <h4 class="text-danger">اسم المدرب</h4>
@@ -558,22 +536,18 @@
             </div>
 
           </form>
-
+          <div class="modal-footer mx-auto">
+            <button type="button" class="btn btn-secondary mr-auto btn-md" data-dismiss="modal">إغلاق</button>
+          </div>
         </div>
       </div>
-      <div class="modal-footer mx-auto">
-        <button type="button" class="btn btn-secondary mr-auto btn-md" data-dismiss="modal">إغلاق</button>
 
-      </div>
     </div>
   </div>
 </div>
 
 
-
-
 <!-- Common Questions -->
-
 <div class="modal fade" id="common-q" tabindex="-1" role="dialog" aria-labelledby="common-q" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
     <div class="modal-content">
@@ -584,91 +558,14 @@
         <div class="row justify-content-end">
           <div class="col text-right">
 
-            <ul class="list-group">
-              
-                  <div class="mb-2">
-                      <button type="button" class="list-group-item list-group-item-action active text-primary btn-light" data-toggle="collapse"
-                      data-target="#questions-0" aria-expanded="false" aria-controls="questions-0">ما هي قنوات التواصل مع مركز تبيان؟</button>
-                    <div class="collapse" id="questions-0">
-                      <div class="card card-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil
-                        anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-                      </div>
-                    </div>
-                  </div>
-                  <div class="mb-2">
-                      <button type="button" class="list-group-item list-group-item-action active text-primary btn-light" data-toggle="collapse"
-                      data-target="#questions-1" aria-expanded="false" aria-controls="questions-1">كيف أتقدم بطلب فتح حلقة؟</button>
-                    <div class="collapse" id="questions-1">
-                      <div class="card card-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil
-                        anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-                      </div>
-                    </div>
-                  </div>
-                  <div class="mb-2">
-                      <button type="button" class="list-group-item list-group-item-action active text-primary btn-light" data-toggle="collapse"
-                      data-target="#questions-2" aria-expanded="false" aria-controls="questions-2">كيف يمكن الاستعلام الشهادات ورخص التدريب؟</button>
-                    <div class="collapse" id="questions-2">
-                      <div class="card card-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil
-                        anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-                      </div>
-                    </div>
-                  </div>
-                  <div class="mb-2">
-                      <button type="button" class="list-group-item list-group-item-action active text-primary btn-light" data-toggle="collapse"
-                      data-target="#questions-3" aria-expanded="false" aria-controls="questions-3"> كيف يمكن الاطلاع على كل جديد في مركز تبيان؟</button>
-                    <div class="collapse" id="questions-3">
-                      <div class="card card-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil
-                        anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-                      </div>
-                    </div>
-                  </div>
-                  <div class="mb-2">
-                      <button type="button" class="list-group-item list-group-item-action active text-primary btn-light" data-toggle="collapse"
-                      data-target="#questions-4" aria-expanded="false" aria-controls="questions-4">ما هي قنوات التواصل مع مركز تبيان؟</button>
-                    <div class="collapse" id="questions-4">
-                      <div class="card card-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil
-                        anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-                      </div>
-                    </div>
-                  </div>
-                  <div class="mb-2">
-                      <button type="button" class="list-group-item list-group-item-action active text-primary btn-light" data-toggle="collapse"
-                      data-target="#questions-5" aria-expanded="false" aria-controls="questions-5">ما هي قنوات التواصل مع مركز تبيان؟</button>
-                    <div class="collapse" id="questions-5">
-                      <div class="card card-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil
-                        anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-                      </div>
-                    </div>
-                  </div>
-                  <div class="mb-2">
-                      <button type="button" class="list-group-item list-group-item-action active text-primary btn-light" data-toggle="collapse"
-                      data-target="#questions-6" aria-expanded="false" aria-controls="questions-6">ما هي قنوات التواصل مع مركز تبيان؟</button>
-                    <div class="collapse" id="questions-6">
-                      <div class="card card-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil
-                        anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-                      </div>
-                    </div>
-                  </div>
-                  <div class="mb-2">
-                      <button type="button" class="list-group-item list-group-item-action active text-primary btn-light" data-toggle="collapse"
-                      data-target="#questions-7" aria-expanded="false" aria-controls="questions-7">ما هي قنوات التواصل مع مركز تبيان؟</button>
-                    <div class="collapse" id="questions-7">
-                      <div class="card card-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil
-                        anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-                      </div>
-                    </div>
-                  </div>
-              
-              
-            </ul>
+
+            <div class="list-group">
+              <div *ngFor="let item of anwersQuestions" class="list-group-item list-group-item-action">
+                <h5>{{item.quistion}}</h5>
+                <h6>{{item.answer}}</h6>
+              </div>
+            </div>
+
 
           </div>
         </div>
