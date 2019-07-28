@@ -3,7 +3,6 @@ import { Router } from '@angular/router'
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { DateserverService } from '../../../service/dateserver.service';
 import { ViewChild, ElementRef } from '@angular/core';
-import { TransferdataService } from 'src/app/service/transferdata.service';
 
 @Component({
   selector: 'app-main-page',
@@ -32,7 +31,7 @@ export class MainPageComponent implements OnInit {
   constructor(private _router: Router, private _user: DateserverService) { }
 
   ngOnInit() {
-    
+
     this.getAnwersQuestions();
     // resize the page
     this.height();
@@ -89,11 +88,9 @@ export class MainPageComponent implements OnInit {
   sowitchToPage(data) {
     if (!data.isActive) {
       this.isActiveMessage = "حسابك غير مفعل!";
-      return;
     }
 
     else {
-
 
       // call this wherever you want to close modal
       this.closeBtn.nativeElement.click();
@@ -140,7 +137,7 @@ export class MainPageComponent implements OnInit {
   height() {
     // set height of body
     // offsetHeight -- clientHeight
-    //window.innerHeight; 
+    //window.innerHeight;
     // document.documentElement.clientHeight;
     let navbar = document.getElementById('navbar').clientHeight;
     let logosRow = document.getElementById('logosRow').clientHeight;

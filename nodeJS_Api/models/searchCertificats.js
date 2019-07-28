@@ -61,3 +61,4 @@ var searchCertificatsSchema = new Schema({
 
 
 module.exports = mongoose.model('SearchCertificats',searchCertificatsSchema,'trainersCert');
+module.exports = mongoose.model('GetTrainersInfo',searchCertificatsSchema,'trainersCert');

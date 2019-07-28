@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'
-import { DateserverService } from '../../../service/dateserver.service';
-import { TrasferOfDataService } from '../../../service/trasfer-of-data.service'
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -21,7 +20,7 @@ export class HomeComponent implements OnInit {
   receiveMessage($event){
     this.datahead = $event;
     console.log(this.datahead);
-    
+
   }
 
 
@@ -30,7 +29,7 @@ export class HomeComponent implements OnInit {
   height() {
     // set height of body
     // offsetHeight -- clientHeight
-    //window.innerHeight; 
+    //window.innerHeight;
     // document.documentElement.clientHeight;
     let navbar = document.getElementById('navbar-h').clientHeight;
     let logosRow = document.getElementById('bodyRow-h').clientHeight;

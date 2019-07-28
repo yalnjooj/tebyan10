@@ -1,22 +1,36 @@
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">رقم الشهادة</th>
-      <th scope="col">نوع الشهادة</th>
-      <th scope="col">الاسم</th>
-      <th scope="col">التقدير</th>
-      <th scope="col">النسبة</th>
-      <th scope="col">تاريخ الاصدار</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>1124588</td>
-      <td>الجزء الاول والثاني</td>
-      <td>عمر نوح عمر</td>
-      <td>ممتاز</td>
-      <td>%100</td>
-      <td>01-01-2019</td>
-    </tr>
-  </tbody>
-</table>
+<div class="table-responsive">
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th scope="col">تاريخ</th>
+        <th scope="col">رقم الدورة</th>
+        <th scope="col">رقم الشهادة</th>
+        <th scope="col">الاسم</th>
+        <th scope="col">الجنسية</th>
+        <th scope="col">رقم الهوية</th>
+        <th scope="col">تاريخ الاصدار</th>
+        <th scope="col">تاريخ الاصدار</th>
+        <th scope="col">تاريخ الاصدار</th>
+        <th scope="col">جرجة التحريري</th>
+        <th scope="col">النسبة</th>
+        <th scope="col">التقدير</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let info of trainersInfo">
+        <td>{{info.No}}</td>
+        <td>{{info.CourseNumber}}</td>
+        <td>{{info.CertificateNumber}}</td>
+        <td>{{info.trainersName}}</td>
+        <td>{{info.Nationality}}</td>
+        <td>{{info.IDNumber}}</td>
+        <td>{{info.attendanceMark}}</td>
+        <td>{{info.participationMark}}</td>
+        <td>{{info.AppliedHours}}</td>
+        <td>{{info.ExamMarkWrite}}</td>
+        <td>{{info.mark}}</td>
+        <td>{{info.grade}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

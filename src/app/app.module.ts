@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { NgHttpLoaderModule } from 'ng-http-loader'; // <============
 
 import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
 import { NgbdDatepickerIslamicumalqura } from './Datepicker/Islamic_Umm_al-Qura/datepicker-islamicumalqura';
@@ -10,7 +10,6 @@ import { NgbdDatepickerIslamiccivil } from './Datepicker/Islamic_Civil/datepicke
 import { datapickerDropdownCivil } from './Datepicker/Islamic_Civil/datapicker-dropdown/datapicker-dropdown';
 import { HttpClientModule } from '@angular/common/http';
 import { DateserverService } from './service/dateserver.service';
-import { TransferdataService } from './service/transferdata.service';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -35,7 +34,8 @@ import { SuperFCerComponent } from './components/mainSystem/body/cANDlic/certefi
 import { CQComponent } from './components/mainSystem/body/cq/cq.component';
 import { AddCQComponent } from './components/mainSystem/body/CQ/add-cq/add-cq.component';
 import { ViowCQComponent } from './components/mainSystem/body/CQ/viow-cq/viow-cq.component';
-import { TrasferOfDataService } from './service/trasfer-of-data.service'
+import { IndividualsComponent } from './components/interface/main-page/dependencies/individuals/individuals.component';
+import { InstituteComponent } from './components/interface/main-page/dependencies/institute/institute.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,7 +62,9 @@ import { TrasferOfDataService } from './service/trasfer-of-data.service'
     ViowCQComponent,
     NgbdDatepickerIslamicumalqura,
     NgbdDatepickerIslamiccivil,
-    datapickerDropdownCivil
+    datapickerDropdownCivil,
+    IndividualsComponent,
+    InstituteComponent
   ],
   imports: [
     BrowserModule,
@@ -71,10 +73,12 @@ import { TrasferOfDataService } from './service/trasfer-of-data.service'
     NgbModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgHttpLoaderModule.forRoot()  // ng-http-loader <============ Don't forget to call 'forRoot()'!
+
   ],
   exports: [],
-  providers: [DateserverService, TransferdataService, TrasferOfDataService],
+  providers: [DateserverService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {  NgForm } from '@angular/forms';
+
 import { DateserverService } from '../../../../../service/dateserver.service';
 
 @Component({
@@ -18,9 +20,11 @@ export class ViowCQComponent implements OnInit {
   }
 
   getAnwersQuestions() {
+    
     this.serverData.getAnwersQuestions()
       .subscribe(
-        data => this.anwersQuestions = data,
+        data => {this.anwersQuestions = data;
+        },
         error => console.error(error)
       );
   } 

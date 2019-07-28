@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DateserverService } from '../../../../../../service/dateserver.service';
 
 @Component({
   selector: 'app-techer-cer',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TecherCerComponent implements OnInit {
 
-  constructor() { }
-
+  constructor( private serverData: DateserverService) { }
+  trainersInfo: Object;
   ngOnInit() {
+    this.getTrainersInfo();
   }
+
+  getTrainersInfo() {
+    
+    this.serverData.getTrainersInfo()
+      .subscribe(
+        data => {this.trainersInfo = data;
+          console.log(data);
+        },
+        error => console.error(error)
+      );
+  } 
 
 }

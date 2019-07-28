@@ -1,0 +1,261 @@
+<form [formGroup]="instituteForm" (submit)="onSavaForm()" role="form" class="was-validated"
+  enctype="multipart/form-data">
+  <fieldset class=" text-right">
+    <!-- disabled -->
+    <div class="form-row mt-3">
+      <div class="col-md-5">
+        <div class="form-group">
+          <label for="validationServer01">إسم الجمعية</label>
+          <input type="text" class="form-control is-valid" formControlName="instituteName" placeholder="إسم الجمعية"
+            required>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="form-group">
+          <label for="validationServer01">رقم الترخيص</label>
+          <input type="text" class="form-control is-valid" formControlName="licensOfInstitute" placeholder="رقم الترخيص"
+            required>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="form-group">
+          <label for="validationServer01">البريد الإلكتروني</label>
+          <input type="email" class="form-control is-valid" formControlName="emailOfInstitute"
+            placeholder="البريد الإلكتروني" required>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 align-items-center mt-1">
+        <div class="form-group col-md mt-2">
+          <label for="">إختر المنطقة</label>
+          <select formControlName="areas" (click)="areas()" class="custom-select" required>
+            <option value="">إختر المنطقة</option>
+            <option value="منطقة الرياض">منطقة الرياض</option>
+            <option value="منطقة مكة المكرمة">منطقة مكة المكرمة</option>
+            <option value="منطقة المدينة المنورة">منطقة المدينة المنورة</option>
+            <option value="منطقة القصيم">منطقة القصيم</option>
+            <option value="المنطقة الشرقية">المنطقة الشرقية</option>
+            <option value="منطقة عسير">منطقة عسير</option>
+            <option value="منطقة تبوك">منطقة تبوك</option>
+            <option value="منطقة حائل">منطقة حائل</option>
+            <option value="منطقة الحدود الشمالية">منطقة الحدود الشمالية</option>
+            <option value="منطقة جازان">منطقة جازان</option>
+            <option value="منطقة نجران">منطقة نجران</option>
+            <option value="منطقة الباحة">منطقة الباحة</option>
+            <option value="منطقة الجوف">منطقة الجوف</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-6 align-items-center mt-1">
+        <div class="form-group col-md mt-2">
+          <label for="">إختر المدينة</label>
+          <select formControlName="cities" (ngModel)="selectCity" class="custom-select" required>
+            <option *ngFor="let city of selectCity" [value]="city.name">{{city.name}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="dropdown-divider"></div>
+
+    <div class="form-row align-items-center mt-1">
+      <div class="col-md-6 mb-3">
+        <label for="validationServer01">اسم مدير الجمعية</label>
+        <input type="text" class="form-control is-valid" formControlName="nameOfTheInstituteDirector"
+          placeholder="اسم مدير الجمعية" required>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="validationServer02">رقم الجوال</label>
+        <input type="number" class="form-control is-valid" formControlName="numberOfTheInstituteDirector"
+          placeholder="رقم الجوال" required>
+      </div>
+    </div>
+
+    <div class="dropdown-divider"></div>
+
+    <div class="form-row align-items-center mt-3">
+      <div class="col-md-4">
+        <label for="validationServer01">عدد الملعمين</label>
+        <input type="number" class="form-control is-valid" formControlName="digitsOfTeachersInInstitute"
+          placeholder="عدد الملعمين" required>
+      </div>
+      <div class="col-md-4">
+        <label for="validationServer01">عدد الحلقات</label>
+        <input type="number" class="form-control is-valid" formControlName="digitsOfClassesInInstitute"
+          placeholder="عدد الحلقات" required>
+      </div>
+      <div class="col-md-4">
+        <label for="validationServer01">عدد الدور النسائية</label>
+        <input type="number" class="form-control is-valid" formControlName="digitsOfWomensInstitutes"
+          placeholder="عدد الدور النسائية" required>
+      </div>
+
+    </div>
+
+
+
+    <div class="form-group mt-3">
+      <div class="checkbox">
+        <label for="customControlValidation1">
+          <input formControlName="isApplicableMethodology" type="checkbox" (change)="show = !show; isApply()"
+            ng-model="show" id="customControlValidation1" />
+          هل تم تطبيق منهجية خاصة لتعليم الصغار لديكم؟</label>
+      </div>
+    </div>
+
+    <div id="text" *ngIf="show">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="validationServer01">ما اسم المنهجية المطبقة؟</label>
+            <input type="text" class="form-control is-valid" formControlName="nameOfApplicableMethodology"
+              placeholder="اسم المنهجية المتبعة">
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="validationServer01">عدد سنوات التطبيق</label>
+            <input type="number" class="form-control is-valid" formControlName="digitsOfYearsOfApplication"
+              id="validationServer01" placeholder="عدد سنوات التطبيق">
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="validationServer01"><small>عدد المستفيدين من المنهجية المطبقة</small></label>
+            <input type="number" class="form-control is-valid" formControlName="digitsOfBeneficiariesOfTheMethodology"
+              placeholder="عدد الفصول المهئية لتعليم الصغار">
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="validatedCustomFile">تقرير المنهجية المطبقة إن وجد</label>
+
+            <div class="form-group custom-file">
+              <input type="file" class="custom-file-input" (change)="methodologyReport($event)" accept="image/x-png,image/gif,image/jpeg,application/pdf">
+              <label class="custom-file-label" for="validatedCustomFile">تقرير المنهجية المطبقة إن وجد</label>
+            </div>
+            <small class="text-danger" *ngIf="unCurrInputRep">{{unCurrInputRep}}</small>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="validationServer01">عدد الفصول المهئية لتعليم الصغار</label>
+            <input type="number" class="form-control is-valid" formControlName="digitsOfClassroomsForKids"
+              placeholder="عدد الفصول المهئية لتعليم الصغار">
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="validationServer01">عدد الحلقات المخصصة لتعليم الصغار؟</label>
+            <input type="number" class="form-control is-valid" formControlName="numberOfCustomClassroomsForKids"
+              placeholder="عدد الحلقات المطبقة في تعليم الصغار">
+          </div>
+        </div>
+      </div>
+
+      <div class="dropdown-divider"></div>
+      مجال التطبيق:
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group mt-3">
+            <div class="checkbox">
+              <label for="boys">
+                <input type="checkbox" formControlName="isBoys" (change)="boys = !boys; isNotBoys()" ng-model="boys"
+                  id="boys" />
+                بنين</label>
+            </div>
+          </div>
+          <div class="row" *ngIf="boys">
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="validationServer01">عدد معلمين الصغار</label>
+                <input type="number" class="form-control is-valid"
+                  formControlName="digitsOfTeachersOfboysForMethodology" placeholder="عدد معلمين الصغار">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="validationServer01"><small>عدد الطلاب الصغار في الجمعية</small></label>
+                <input type="number" class="form-control is-valid" formControlName="digitsOfBoysStudentsInTheInstitute"
+                  placeholder="عدد الطلاب الصغار في الجمعية">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group mt-3">
+            <div class="checkbox">
+              <label for="girls">
+                <input type="checkbox" formControlName="isGirls" (change)="girls = !girls; isNotGirls()"
+                  ng-model="girls" id="girls" />
+                بنات</label>
+            </div>
+          </div>
+          <div class="row" *ngIf="girls">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="validationServer01">عدد معلمات الصغار</label>
+                <input type="number" class="form-control is-valid"
+                  formControlName="digitsOfTeachersOfgirlsForMethodology" placeholder="عدد معلمات الصغار">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="validationServer01"><small>عدد الطالبات الصغار في الجمعية</small></label>
+                <input type="number" class="form-control is-valid" formControlName="digitsOfGirlsStudentsInTheInstitute"
+                  placeholder="عدد الطالبات الصغار في الجمعية">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+
+  <div class="dropdown-divider"></div>
+
+  <div class="col-md-12">
+    <div class="form-group">
+      <div class="form-group custom-file">
+        <input type="file" class="custom-file-input" (change)="methodologyLetter($event)" id="validatedCustomFile"
+        accept="image/x-png,image/gif,image/jpeg,application/pdf" required>
+        <label class="custom-file-label" for="validatedCustomFile">خطاب طلب منهجية التبيان </label>
+      </div>
+      <small class="text-danger" *ngIf="unCurrInputLett">{{unCurrInputLett}}</small>
+    </div>
+  </div>
+  <div class="fileReaderPreview" *ngIf="fileReaderPreview !== '' && fileReaderPreview">
+    <img [src]="fileReaderPreview" [alt]="instituteForm.value.instituteName">
+  </div>
+  <div class="text-right mt-4">
+    <button class="btn btn-primary" type="submit">إنشاء الحساب</button>
+  </div>
+  <ng-http-loader></ng-http-loader>
+</form>
+
+
+<!-- Button trigger modal -->
+<input type="hidden" class="btn btn-primary" #showMoadel data-toggle="modal" data-target="#exampleModalCenter" />
+
+<!-- Modal -->
+<div class="modal fade bd-example-modal-lg" data-backdrop="false" id="exampleModalCenter" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header  mx-auto">
+        <img src="../../../../../../assets//icons/successful-right.svg" height="40" alt="successful-right" /><br />
+      </div>
+      <div class="modal-body  text-center">
+        <h6 class="modal-title" id="exampleModalCenterTitle">{{messageSuccessfuly}}</h6><br />
+        <h5>سوف يتم التواصل معكم عبر البريد الإلكتروني</h5>
+      </div>
+      <div class="modal-footer  mx-auto">
+        <button type="button" class="btn btn-secondary" (click)="closeModals()" data-dismiss="modal">إغلاق</button>
+      </div>
+    </div>
+  </div>
+</div>

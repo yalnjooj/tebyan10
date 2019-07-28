@@ -3,6 +3,7 @@ var router = express.Router();
 var User = require('../models/user');
 var SearchCertificats = require('../models/searchCertificats');
 var InsertQuestion = require('../models/InsertQuestion');
+var GetTrainersInfo = require('../models/searchCertificats');
 
 var passport = require('passport');
 
@@ -148,6 +149,17 @@ async function insertQuestion(req, res) {
 router.get('/getAnwersQuestions', function (req, res, next) {
 
   InsertQuestion.find({}, (err, event) => {
+    if (!err)
+      res.status(200).json(event);
+    else
+      console.log(err);
+  });
+
+});
+
+router.get('/getTrainersInfo', function (req, res, next) {
+
+  GetTrainersInfo.find({}, (err, event) => {
     if (!err)
       res.status(200).json(event);
     else
