@@ -6,23 +6,17 @@ export class DateserverService {
   constructor(private http: HttpClient) {}
 
   register(body: any) {
-    return this.http.post('http://127.0.0.1:3000/users/register', body, {
-      observe: 'body',
-      headers: new HttpHeaders().append('Content-Type', 'application/json')
-    });
+    return this.http.post('http://127.0.0.1:3000/users/register', body);
   }
 
   login(body: any) {
-    console.log('ok');
-
     return this.http.post('http://127.0.0.1:3000/users/login', body, {
       observe: 'body',
-      withCredentials: true,
-      headers: new HttpHeaders().append('Content-Type', 'application/json')
+      withCredentials: true
     });
   }
 
-  user() {
+  userisAuthenticate() {
     return this.http.get('http://127.0.0.1:3000/users/user', {
       observe: 'body',
       withCredentials: true,
@@ -31,42 +25,25 @@ export class DateserverService {
   }
 
   trainerSearch(data) {
-    return this.http.post('http://127.0.0.1:3000/users/trainerSearch', data, {
-      observe: 'body',
-      withCredentials: true,
-      headers: new HttpHeaders().append('Content-Type', 'application/json')
-    });
+    return this.http.post('http://127.0.0.1:3000/users/trainerSearch', data);
   }
 
   insertQuestion(data) {
-    return this.http.post('http://127.0.0.1:3000/users/insertQuestion', data, {
-      observe: 'body',
-      withCredentials: true,
-      headers: new HttpHeaders().append('Content-Type', 'application/json')
-    });
+    return this.http.post('http://127.0.0.1:3000/users/insertQuestion', data);
   }
 
   getAnwersQuestions() {
-    return this.http.get('http://127.0.0.1:3000/users/getAnwersQuestions', {
-      observe: 'body',
-      withCredentials: true,
-      headers: new HttpHeaders().append('Content-Type', 'application/json')
-    });
+    return this.http.get('http://127.0.0.1:3000/users/getAnwersQuestions');
   }
 
   getTrainersInfo() {
-    return this.http.get('http://127.0.0.1:3000/users/getTrainersInfo', {
-      observe: 'body',
-      withCredentials: true,
-      headers: new HttpHeaders().append('Content-Type', 'application/json')
-    });
+    return this.http.get('http://127.0.0.1:3000/users/getTrainersInfo');
   }
 
   logout() {
     return this.http.get('http://127.0.0.1:3000/users/logout', {
       observe: 'body',
-      withCredentials: true,
-      headers: new HttpHeaders().append('Content-Type', 'application/json')
+      withCredentials: true
     });
   }
 

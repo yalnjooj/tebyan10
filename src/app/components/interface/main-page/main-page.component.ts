@@ -43,7 +43,7 @@ export class MainPageComponent implements OnInit {
     }
 
     // console.log(JSON.stringify(this.loginForm.value));
-    this._user.login(JSON.stringify(this.loginForm.value))
+    this._user.login(this.loginForm.value)
       .subscribe(
         data => this.sowitchToPage(data),
         error => console.error(error)

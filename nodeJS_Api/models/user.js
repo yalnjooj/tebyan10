@@ -31,11 +31,11 @@ var userSchema = new Schema({
   }
 });
 
-userSchema.statics.hashPassword = function hashPassword(password){
-  return bcrypt.hashSync(password,10);
+userSchema.statics.generateHash = function hashPassword(password){
+  return bcrypt.hashSync(password, 10);
 }
 
-userSchema.methods.isValid = function(hashedpassword){
+userSchema.methods.validPassword = function(hashedpassword){
   return  bcrypt.compareSync(hashedpassword, this.password);
 }
 

@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+
 var User = require('../models/user');
 var SearchCertificats = require('../models/searchCertificats');
 var InsertQuestion = require('../models/InsertQuestion');
@@ -34,11 +35,12 @@ async function addToDB(req, res) {
 
 
 router.post('/login', function (req, res, next) {
-  passport.authenticate('local', function (err, user, info) {
+  passport.authenticate('local-login', function (err, user, info) {
     if (err) { return res.status(501).json(err); }
     if (!user) { return res.status(501).json(info); }
     req.logIn(user, function (err) {
       if (err) { return res.status(501).json(err); }
+
       return res.status(200).json(req.user);
     });
   })(req, res, next);
@@ -47,8 +49,6 @@ router.post('/login', function (req, res, next) {
 
 router.get('/user', isValidUser, function (req, res, next) {
   let info = userType(req.user)
-
-
   return res.status(200).json(info);
 });
 
@@ -59,7 +59,7 @@ router.get('/logout', isValidUser, function (req, res, next) {
 
 function isValidUser(req, res, next) {
   if (req.isAuthenticated()) { console.log('user is exesst!'); next(); }
-  else { console.log('use dosnot there!'); return res.status(401).json({ message: 'Unauthorized Request' }); }
+  else { console.log('Unauthorized user dose|not there!'); return res.status(401).json({ message: 'Unauthorized user dose|not there!' }); }
 }
 
 function userType(type) {
