@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { DateserverService } from '../../../service/dateserver.service';
 import { ViewChild, ElementRef } from '@angular/core';
@@ -13,11 +13,13 @@ export class MainPageComponent implements OnInit {
   // this for closeing the model
   @ViewChild('closeBtn') closeBtn: ElementRef;
 
-  noValue: String;
+  noValue: string;
   searchResult = Object();
-  searchError: String;
-  isActiveMessage: String;
+  searchError: string;
+  isActiveMessage: string;
   anwersQuestions: Object;
+  singleOffOn: boolean;
+  instituteOffOn: boolean;
 
   loginForm: FormGroup = new FormGroup({
     email: new FormControl(null, [Validators.email, Validators.required]),
@@ -28,10 +30,10 @@ export class MainPageComponent implements OnInit {
     trainerFild: new FormControl(null, Validators.required)
   });
 
-  constructor(private _router: Router, private _user: DateserverService) { }
+  constructor(private _router: Router, private server: DateserverService) {}
 
   ngOnInit() {
-
+    this.getOffOn();
     this.getAnwersQuestions();
     // resize the page
     this.height();
@@ -39,26 +41,28 @@ export class MainPageComponent implements OnInit {
 
   login() {
     if (!this.loginForm.valid) {
-      console.log('خطأ في البيانات!'); return;
+      console.log('خطأ في البيانات!');
+      return;
     }
 
     // console.log(JSON.stringify(this.loginForm.value));
-    this._user.login(this.loginForm.value)
+    this.server
+      .login(this.loginForm.value)
       .subscribe(
         data => this.sowitchToPage(data),
         error => console.error(error)
       );
   }
+
   trainerFild() {
     if (!this.trainerForm.valid) {
       this.noValue = 'ادخل رقم الشهادة!';
-    }
-    else {
-      this._user.trainerSearch(JSON.stringify(this.trainerForm.value))
+    } else {
+      this.server
+        .trainerSearch(JSON.stringify(this.trainerForm.value))
         .subscribe(
           data => {
-            if (data == null)
-              this.searchError = 'لا توجد نتيجة!';
+            if (data == null) this.searchError = 'لا توجد نتيجة!';
             else {
               this.searchResult = data;
               this.searchError = '';
@@ -67,14 +71,14 @@ export class MainPageComponent implements OnInit {
           },
           error => console.error('error' + error)
         );
-
     }
   }
 
   getAnwersQuestions() {
-    this._user.getAnwersQuestions()
+    this.server
+      .getAnwersQuestions()
       .subscribe(
-        data => this.anwersQuestions = data,
+        data => (this.anwersQuestions = data),
         error => console.error(error)
       );
   }
@@ -87,41 +91,37 @@ export class MainPageComponent implements OnInit {
 
   sowitchToPage(data) {
     if (!data.isActive) {
-      this.isActiveMessage = "حسابك غير مفعل!";
-    }
-
-    else {
-
+      this.isActiveMessage = 'حسابك غير مفعل!';
+    } else {
       // call this wherever you want to close modal
       this.closeBtn.nativeElement.click();
 
       switch (data.userType) {
-
-        case "mainuser":
+        case 'mainuser':
           this._router.navigate(['/home']);
           break;
 
-        case "education":
+        case 'education':
           this._router.navigate(['/education']);
           break;
 
-        case "development":
+        case 'development':
           this._router.navigate(['/development']);
           break;
 
-        case "media":
+        case 'media':
           this._router.navigate(['/media']);
           break;
 
-        case "institute":
+        case 'institute':
           this._router.navigate(['/institute']);
           break;
 
-        case "trainer":
+        case 'trainer':
           this._router.navigate(['/trainer']);
           break;
 
-        case "supervisor":
+        case 'supervisor':
           this._router.navigate(['/supervisor']);
           break;
 
@@ -130,22 +130,31 @@ export class MainPageComponent implements OnInit {
           break;
       }
     }
+  }
 
+  getOffOn() {
+    this.server.getOffOn().subscribe(
+      data => {
+        this.singleOffOn = data['singleOffO'];
+        this.instituteOffOn = data['instituteOffOn'];
+      },
+      err => err
+    );
   }
 
   // height of hol page.
   height() {
     // set height of body
     // offsetHeight -- clientHeight
-    //window.innerHeight;
+    // window.innerHeight;
     // document.documentElement.clientHeight;
-    let navbar = document.getElementById('navbar').clientHeight;
-    let logosRow = document.getElementById('logosRow').clientHeight;
-    let cenerSpases = document.getElementById('cenerSpase').clientHeight;
-    let cenerSpase = cenerSpases + 0;
+    const navbar = document.getElementById('navbar').clientHeight;
+    const logosRow = document.getElementById('logosRow').clientHeight;
+    const cenerSpases = document.getElementById('cenerSpase').clientHeight;
+    const cenerSpase = cenerSpases + 0;
 
-    let win = window.document.body.clientHeight;
-    let newHeight = win - (navbar + logosRow + cenerSpase);
-    document.getElementById("containerHeight").style.height = newHeight + "px";
+    const win = window.document.body.clientHeight;
+    const newHeight = win - (navbar + logosRow + cenerSpase);
+    document.getElementById('containerHeight').style.height = newHeight + 'px';
   }
 }

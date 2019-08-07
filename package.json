@@ -28,6 +28,7 @@
     "font-awesome": "^4.7.0",
     "jquery": "^3.4.1",
     "ng-http-loader": "^5.1.0",
+    "ng2-pdf-viewer": "^5.3.3",
     "ng2-slim-loading-bar": "^4.0.0",
     "popper.js": "^1.15.0",
     "rxjs": "^6.5.2",

@@ -15,14 +15,13 @@ export class TecherCerComponent implements OnInit {
   }
 
   getTrainersInfo() {
-    
+
     this.serverData.getTrainersInfo()
       .subscribe(
         data => {this.trainersInfo = data;
-          console.log(data);
         },
         error => console.error(error)
       );
-  } 
+  }
 
 }

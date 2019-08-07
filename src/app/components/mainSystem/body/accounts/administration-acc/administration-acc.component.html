@@ -1,28 +1,40 @@
-<form class="form-inline mt-3">
-  <div class="form-group mb-2">
-    <label for="date" class="sr-only">تايخ الانشاء</label>
-    <input type="date" class="form-control" id="date" disabled />
-  </div>
-  <div class="form-group mx-sm-1 mb-2">
-    <label for="username" class="sr-only">اسم المستخدم</label>
-    <input type="username" class="form-control" id="username" placeholder="اسم المستخدم" disabled />
-  </div>
-  <div class="form-group mx-sm-1 mb-2">
-    <label for="email" class="sr-only">البريد الالكتروني</label>
-    <input type="email" class="form-control" id="email" placeholder="البريد الالكتروني">
-  </div>
-  <div class="form-group mx-sm-1 mb-2">
-    <label for="inputPassword1" class="sr-only">تغيير كلمة المرور</label>
-    <input type="password" class="form-control" placeholder="ادخل كلمة المرور">
-  </div>
-  <div class="form-group mx-sm-1 mb-2">
-    <input type="submit" class="btn btn-warning" value="تعديل" />
-    <input type="submit" class="btn btn-success mx-sm-2" value="موافق" />
-    <input type="submit" class="btn btn-danger mx-sm-5" value="حذف" />
-    <input type="checkbox" class="checkbox" name="active" value="active" />
+<div *ngFor="let user of users">
+  <div *ngIf="user.userType == 'mainuser' || user.userType == 'education' || user.userType == 'development' || user.userType == 'media'">
+    <form class="form-inline mt-3">
+      <div class="form-group mb-1">
 
-
+        <select [value]="user.userType" #userType class="form-control" disabled>
+          <option value="education">قسم التعليم</option>
+          <option value="development">قسم التدريب والتطوير</option>
+          <option value="media">قسم الاعلام</option>
+          <option value="institute">حساب جهة</option>
+          <option value="trainer">حساب مدرب</option>
+          <option value="supervisor">حساب مشرف</option>
+        </select>
+      </div>
+      <div class="form-group mx-sm-1 mb-2">
+        <input type="text" class="form-control" #username value="{{user.username}}" placeholder="اسم المستخدم" />
+      </div>
+      <div class="form-group mx-sm-1 mb-2">
+        <input type="email" class="form-control" #email value="{{user.email}}" placeholder="البريد الالكتروني">
+      </div>
+      <div class="form-group mx-sm-1 mb-2">
+        <input type="password" #password class="form-control" placeholder="ادخل كلمة المرور">
+        <div class="input-group-prepend">
+          <button class="btn btn-outline-secondary" (click)="chengePass(user._id, password)" type="button">حفظ</button>
+        </div>
+      </div>
+      <div class="form-group mx-sm-1 mb-2">
+        <div class="m-1">
+          <input type="button" (click)="ReSaveUser(user._id, username, email)" class="btn btn-success "
+            value="حفظ" />
+        </div>
+        <input type="button" (click)="deleteUser(user._id)" class="btn btn-danger" value="حذف" />
+        <div class="custom-control m-1">
+          <label><input type="checkbox" (click)="isActive(user._id)" [checked]="user.isActive"> تفعيل</label>
+        </div>
+      </div>
+      <ng-http-loader></ng-http-loader>
+    </form>
   </div>
-
-
-</form>
+</div>

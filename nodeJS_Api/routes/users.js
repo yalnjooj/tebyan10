@@ -2,42 +2,20 @@ var express = require('express');
 var router = express.Router();
 
 var User = require('../models/user');
+
 var SearchCertificats = require('../models/searchCertificats');
 var InsertQuestion = require('../models/InsertQuestion');
 var GetTrainersInfo = require('../models/searchCertificats');
 
 var passport = require('passport');
 
-router.post('/register', function (req, res, next) {
-  addToDB(req, res);
-});
-
-
-async function addToDB(req, res) {
-
-  var user = new User({
-    userType: req.body.newaccType,
-    username: req.body.newaccName,
-    email: req.body.newemail,
-    password: User.hashPassword(req.body.inputPassword1),
-    isActive: false,
-    creation_dt: Date.now()
-  });
-
-  try {
-    doc = await user.save();
-    return res.status(201).json(doc);
-  }
-  catch (err) {
-    return res.status(501).json(err);
-  }
-}
-
 
 router.post('/login', function (req, res, next) {
   passport.authenticate('local-login', function (err, user, info) {
+
     if (err) { return res.status(501).json(err); }
     if (!user) { return res.status(501).json(info); }
+
     req.logIn(user, function (err) {
       if (err) { return res.status(501).json(err); }
 
@@ -167,5 +145,17 @@ router.get('/getTrainersInfo', function (req, res, next) {
   });
 
 });
+
+router.put('/chengePass', function (req, res, next) {
+
+  User.findByIdAndUpdate(req.body.id,{$set:{password: User.generateHash(req.body.pass)} }, (err, event) => {
+    if (!err)
+      res.status(200).json('تم تغيير كلمة المرور بنجاح!');
+    else
+      console.log(err);
+  });
+
+});
+
 
 module.exports = router;

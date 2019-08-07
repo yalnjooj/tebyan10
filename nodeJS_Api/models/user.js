@@ -4,7 +4,7 @@ var bcrypt = require('bcrypt');
 
 // Define collection and schema for registrationuser
 var userSchema = new Schema({
-  userType: {
+  userType: { // nickname
     type: String,
     required: true
   },
@@ -15,21 +15,24 @@ var userSchema = new Schema({
   email: {
     type: String,
     unique: true,
-    required: true
+    required: true,
+    lowercase: true
   },
   password: {
     type: String,
-    required: true
+  //  required: true
   },
   isActive: {
     type: Boolean,
-    required: true
+    required: true,
+    default: false
   },
   creation_dt: {
     type: Date,
-    required: true
-  }
-});
+    required: true,
+    default: Date.now()
+  },
+}, {timestamps: true});
 
 userSchema.statics.generateHash = function hashPassword(password){
   return bcrypt.hashSync(password, 10);
@@ -39,4 +42,6 @@ userSchema.methods.validPassword = function(hashedpassword){
   return  bcrypt.compareSync(hashedpassword, this.password);
 }
 
-module.exports = mongoose.model('User',userSchema);
+module.exports = mongoose.model('RegisterUser',userSchema, 'users');
+module.exports = mongoose.model('User',userSchema, 'users');
+module.exports = mongoose.model('GetData',userSchema, 'users');

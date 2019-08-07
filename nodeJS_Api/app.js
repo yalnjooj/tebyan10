@@ -28,7 +28,7 @@ app.use((req, res, next) => {
   );
   res.setHeader(
     "Access-Control-Allow-Methods",
-    "GET, POST, PATCH, DELETE, OPTIONS"
+    "GET, POST, PATCH, PUT, DELETE, OPTIONS"
   );
   next();
 });
@@ -70,20 +70,26 @@ app.use(session({
     ttl: 60 * 60 * 24 * 1 // 1 day
   }),
   cookie:{
-    maxAge:36000000,
-    httpOnly:false,
-    secure:false,
-    expires: new Date(Date.now() + 60 * 60 * 1000) // 1 hour
+  // expires: new Date(Date.now() + 60 * 60 * 1000), // 1 hour
+    httpOnly: false,
+    secure: false,
+    maxAge: 3600000
   }
 }));
 
 //passport
-require('./passport-config')(passport);
+require('./passport-config');
 app.use(passport.initialize());
 app.use(passport.session());
 
 // app.use('/',  require('./routes/index'));
 app.use('/users', require('./routes/users'));
+app.use('/isActive', require('./routes/switch'));
+app.use('/courses', require('./routes/courses'));
+app.use('/registration', require('./routes/registration'));
+app.use('/gets', require('./routes/gets'));
+app.use('/ReSaveData', require('./routes/reSaveData'));
+app.use('/Remove', require('./routes/remove'));
 
 app.use(formidableMiddleware({
   encoding: 'utf-8',

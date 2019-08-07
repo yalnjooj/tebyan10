@@ -5,8 +5,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class DateserverService {
   constructor(private http: HttpClient) {}
 
-  register(body: any) {
-    return this.http.post('http://127.0.0.1:3000/users/register', body);
+  register(body) {
+    return this.http.post('http://127.0.0.1:3000/registration/register', body);
   }
 
   login(body: any) {
@@ -19,8 +19,7 @@ export class DateserverService {
   userisAuthenticate() {
     return this.http.get('http://127.0.0.1:3000/users/user', {
       observe: 'body',
-      withCredentials: true,
-      headers: new HttpHeaders().append('Content-Type', 'application/json')
+      withCredentials: true
     });
   }
 
@@ -48,10 +47,10 @@ export class DateserverService {
   }
 
   reqOpnNewIns(...values) {
-    const postData =  new FormData();
+    const postData = new FormData();
 
     // General Information
-    postData.append('instituteName',  values[0]);
+    postData.append('instituteName', values[0]);
     postData.append('licensOfInstitute', values[1]);
     postData.append('emailOfInstitute', values[2]);
     postData.append('areas', values[3]);
@@ -72,7 +71,6 @@ export class DateserverService {
     postData.append('numberOfCustomClassroomsForKids', values[16]);
     postData.append('methodologyReport', values[17]);
 
-
     // بنين
     postData.append('isBoys', values[18]);
     postData.append('digitsOfTeachersOfboysForMethodology', values[19]);
@@ -85,8 +83,45 @@ export class DateserverService {
 
     postData.append('creationDateAR', values[24]);
 
-    return this.http.post('http://127.0.0.1:3000/buildUp/newInstitute', postData);
+    return this.http.post(
+      'http://127.0.0.1:3000/buildUp/newInstitute',
+      postData
+    );
   }
+
+  getReNewCourese() {
+    return this.http.get('http://127.0.0.1:3000/courses/reqOpnNewIns');
+  }
+
+  postOffOn(offOn) {
+    return this.http.post('http://127.0.0.1:3000/isActive/OffOn', { offOn });
+  }
+
+  getOffOn() {
+    return this.http.get('http://127.0.0.1:3000/isActive/OffOn');
+  }
+
+  accountsData() {
+    return this.http.get('http://127.0.0.1:3000/gets/accountsData');
+  }
+
+  ReSaveUser(userInfo) {
+    return this.http.post('http://127.0.0.1:3000/ReSaveData/ReSaveUser', userInfo);
+  }
+
+  removeUser(id) {
+    return this.http.delete(`http://127.0.0.1:3000/Remove/removeUser/${id}`);
+  }
+
+  isActive(id) {
+    return this.http.put(`http://127.0.0.1:3000/isActive/activeUser`, {id});
+  }
+
+  chengePass(id, pass) {
+    return this.http.put('http://127.0.0.1:3000/users/chengePass', {id, pass});
+  }
+
 }
+
 
 // <{ message: string; newInsSchema: NewInstitute}>

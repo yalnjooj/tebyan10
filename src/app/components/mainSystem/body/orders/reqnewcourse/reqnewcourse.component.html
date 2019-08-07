@@ -1,0 +1,157 @@
+<div class="container">
+  <div class="row mt-3">
+    <div class="col">
+      <form [formGroup]="offOnInstitute" (change)="postSwitchInstitute()">
+        <div class="custom-control custom-switch">
+          <input type="checkbox" formControlName="offOnInstitute" class="custom-control-input" id="offOnInstitute">
+          <label class="custom-control-label" for="offOnInstitute">تسجيل الجهات</label>
+        </div>
+      </form>
+    </div>
+    <div class="col">
+      <form [formGroup]="offOnSingle" (change)="postSwitchSngle()">
+        <div class="custom-control custom-switch">
+          <input type="checkbox" formControlName="offOnSingle" class="custom-control-input" id="offOnSingle">
+          <label class="custom-control-label" for="offOnSingle">تسجيل الأفراد</label>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="ScroolingDiv p-3">
+  <div class="container p-3 mb-2 bg-light" *ngFor="let institute of institutes">
+    <div class="row">
+      <div class="col text-center mt-3">
+        <h5>طلب فتح حساب في منصة تبيان</h5>
+      </div>
+    </div>
+    <hr />
+    <div class="col">
+      <a href="{{institute.methodologyLetter}}" target="_blank">الخطاب</a>
+    </div>
+    <div class="col" *ngIf="institute.isApplicableMethodology">
+      <a href="{{institute.methodologyReport}}" target="_blank">التقرير</a>
+    </div>
+    <div class="row">
+      <div class="col mt-3">
+        <p class="text-secondary">تاريخ الطلب: <br /><b class="text-danger">{{institute.creationDateAR}}هـ</b></p>
+      </div>
+      <div class="col mt-3">
+        <p class="text-secondary">اسم الجمعية: <br /><b>{{institute.instituteName}}</b></p>
+      </div>
+      <div class="col mt-3">
+        <p class="text-secondary">البريد الالكتروني: <br /><b>{{institute.emailOfInstitute}}</b></p>
+      </div>
+      <div class="col mt-3">
+        <p class="text-secondary">رقم الترخيص: <br /><b>{{institute.licensOfInstitute}}</b></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <p class="text-secondary">المنطقة: <br /><b>{{institute.areas}}</b></p>
+      </div>
+      <div class="col">
+        <p class="text-secondary">المدينة: <br /><b>{{institute.cities}}</b></p>
+      </div>
+      <div class="col">
+        <p class="text-secondary">اسم مدير الجمعية: <br /><b>{{institute.nameOfTheInstituteDirector}}</b></p>
+      </div>
+      <div class="col">
+        <p class="text-secondary">رقم الجوال: <br /><b>0{{institute.numberOfTheInstituteDirector}}</b></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <p class="text-secondary">عد المعلمين: <b>{{institute.digitsOfTeachersInInstitute}}</b></p>
+      </div>
+      <div class="col">
+        <p class="text-secondary">عدد الحلقات: <b>{{institute.digitsOfClassesInInstitute}}</b></p>
+      </div>
+      <div class="col">
+        <p class="text-secondary">عدد الدور النسائية: <b>{{institute.digitsOfWomensInstitutes}}</b></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <p class="text-secondary">هل تم تطبيق منهجية خاصة لتعليم الصغار لديكم؟ <span
+            *ngIf="institute.isApplicableMethodology; then yes else no"></span></p>
+        <ng-template #yes><span class="text-success"><b>نعم</b></span></ng-template>
+        <ng-template #no><span class="text-danger"><b>لا</b></span></ng-template>
+      </div>
+    </div>
+    <div *ngIf="institute.isApplicableMethodology">
+      <hr />
+      <div class="row">
+        <div class="col">
+          <p class="text-secondary">اسم المنهجية المطبقة: <b>{{institute.nameOfApplicableMethodology}}</b></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <p class="text-secondary">عدد سنوات التطبيق: <b>{{institute.digitsOfYearsOfApplication}}</b></p>
+        </div>
+        <div class="col">
+          <p class="text-secondary">عدد المستفيدين من المنهجية المطبقة:
+            <b>{{institute.digitsOfBeneficiariesOfTheMethodology}}</b></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <p class="text-secondary">عدد الفصول المهيئة لتعليم الصغار: <b>{{institute.digitsOfClassroomsForKids}}</b></p>
+        </div>
+        <div class="col">
+          <p class="text-secondary">عدد الحلقات المخصصة لتعليم الصغار:
+            <b>{{institute.numberOfCustomClassroomsForKids}}</b></p>
+        </div>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="col">
+          <p class="text-secondary">بنين: <b>{{institute.isBoys}}</b></p>
+          <div class="row">
+            <div class="col">
+              <p class="text-secondary">عدد معلمي الصغار: <b>{{institute.digitsOfTeachersOfboysForMethodology}}</b></p>
+            </div>
+            <div class="col">
+              <p class="text-secondary">عدد الطلاب الصغار في الجمعية:
+                <b>{{institute.digitsOfBoysStudentsInTheInstitute}}</b></p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <p class="text-secondary">بنات: <b>{{institute.isGirls}}</b></p>
+          <div class="row">
+            <div class="col">
+              <p class="text-secondary">عدد معلمات الصغار: <b>{{institute.digitsOfTeachersOfgirlsForMethodology}}</b>
+              </p>
+            </div>
+            <div class="col">
+              <p class="text-secondary">عدد الطالبات الصغار في الجمعية:
+                <b>{{institute.digitsOfGirlsStudentsInTheInstitute}}</b></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- <div class="row">
+        <div class="col">
+           <div>
+            <label>PDF src</label>
+            <input type="text" placeholder="PDF src" [(ngModel)]="institute.methodologyLetter">
+        </div>
+          <pdf-viewer [src]="institute.methodologyLetter" [show-all]="false" [page]="1" [zoom]="0.10  "
+            style="display: block;">Lodding>>></pdf-viewer>
+          <img src="{{institute.methodologyLetter}}" height="30" alt="">
+        </div>
+        <div class="col">
+          <pdf-viewer [src]="institute.methodologyReport" [show-all]="false" [page]="1" [zoom]="0.10  "
+            style="display: block;">Lodding>>></pdf-viewer>
+          <img src="{{institute.methodologyReport}}" height="30" alt="">
+        </div>
+      </div> -->

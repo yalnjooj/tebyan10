@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgHttpLoaderModule } from 'ng-http-loader'; // <============
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
 import { NgbdDatepickerIslamicumalqura } from './Datepicker/Islamic_Umm_al-Qura/datepicker-islamicumalqura';
@@ -36,6 +37,8 @@ import { AddCQComponent } from './components/mainSystem/body/CQ/add-cq/add-cq.co
 import { ViowCQComponent } from './components/mainSystem/body/CQ/viow-cq/viow-cq.component';
 import { IndividualsComponent } from './components/interface/main-page/dependencies/individuals/individuals.component';
 import { InstituteComponent } from './components/interface/main-page/dependencies/institute/institute.component';
+import { OrdersComponent } from './components/mainSystem/body/orders/orders.component';
+import { ReqnewcourseComponent } from './components/mainSystem/body/orders/reqnewcourse/reqnewcourse.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,7 +67,9 @@ import { InstituteComponent } from './components/interface/main-page/dependencie
     NgbdDatepickerIslamiccivil,
     datapickerDropdownCivil,
     IndividualsComponent,
-    InstituteComponent
+    InstituteComponent,
+    OrdersComponent,
+    ReqnewcourseComponent
   ],
   imports: [
     BrowserModule,
@@ -74,8 +79,8 @@ import { InstituteComponent } from './components/interface/main-page/dependencie
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NgHttpLoaderModule.forRoot()  // ng-http-loader <============ Don't forget to call 'forRoot()'!
-
+    NgHttpLoaderModule.forRoot(),  // ng-http-loader <============ Don't forget to call 'forRoot()'!
+    PdfViewerModule
   ],
   exports: [],
   providers: [DateserverService],

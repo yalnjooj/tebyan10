@@ -186,7 +186,7 @@ export class IndividualsComponent implements OnInit, OnDestroy {
 
   }
 
-  closeModals(){
+  closeModals() {
 
     this.instituteForm.controls['instituteName'].reset();
     this.instituteForm.get('instituteName').updateValueAndValidity();
@@ -375,7 +375,7 @@ export class IndividualsComponent implements OnInit, OnDestroy {
     }
   }
 
-  areas(){
+  areas() {
     let s = new SelectCity();
     this.selectCity = s.city(this.instituteForm.value.areas);
   }
